@@ -16,9 +16,59 @@
 
 ---
 
-## Operational Environment
+## Typical Operating Environment
+
+Canvas LMS is typically hosted on a POSIX system, usually Linux, but OS X is also supported. It requires at least 8 GB of RAM.
+
+Canvas requires several supporting servers. It is possible to host all of the servers on a single machine, but they can also be partitioned across Docker containers, across cloud servers, or even across multiple bare metal machines. Instructure uses AWS to host subscription Canvas instances.
+
+### Running Canvas requires the following servers:
+* **Web server aka appserver** (typical: NGINX, Apache also supported)
+* **Database server aka dbserver** (typical: PostgreSQL)
+* **Job server** (typical: Ubuntu, often hosted on the same machine as the appserver)
+
+Most configurations will also use a mail server. Many configurations will use an application server alongside the web server to simplify administration and/or improve performance. The web server should be configured to use SSL, either directly or otherwise, which will require a certificate issued by a certificate authority.
+
+Canvas uses its own rich content editor. Canvas supports username/password logins and also OAUTH.
+
+Canvas can achieve greater performance when using cache servers. Memcache and Redis are supported, but Redis is recommended by the authors. Amazon ElastiCache provides interfaces that are compatible with both Memcache and Redis, so it is reasonable to suppose that its use is typical.
+
+### Advanced configurations can provide for:
+* Load balancing with multiple web servers
+* Redundant database servers
+* Offsite backup
+* Encrypted database volumes (typically using AWS KMS)
+
+**Instructure requires that database volumes used by subscription instances be encrypted.**
+
+Canvas LMS depends heavily on the Ruby on Rails framework and uses the Ruby Gems package management framework. It also uses Bundler to manage dependencies/versions. It can use NPM for managing JavaScript dependencies, but Yarn is preferred. Canvas also requires NodeJS.
+
+During configuration, Canvas requires admins to enter their own security keys, which are stored in the security.yml configuration file.
+
+### Hypothetical Operating Environment Example:
+* **Cloud provider:** AWS
+* **Operating system:** Ubuntu
+* **Web server:** NGINX
+* **Mail server:** Mailgun SMTP
+* **Load balancer:** Elastic Load Balancing
+* **SSL certificate:** LetsEncrypt
+* **Authentication:** SAML
+* **Cache:** Amazon ElastiCache
+* **Database:** Redundant PostgreSQL databases hosted with Amazon Redshift
+* **Encryption:** KMS
+* **Backup:** Daily offsite backup
+
+### Potential Attack Vectors
+* **Database server:** While database server vulnerabilities are largely out of scope of this project, it remains a significant risk.
+* **Web server:** As the public-facing component, the web server is a prime target. Its dependencies can also introduce vulnerabilities.
+* **Job server:** Access to the database could be gained through compromising the job server.
 
 ### Diagram of Operational Environment
+
+![System of Interest](engineering_drawing.png)
+
+### Communication Flow Diagram
+![Communication Flow](communication_drawing.png)
 
 ---
 
