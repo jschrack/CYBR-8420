@@ -166,4 +166,8 @@ Canvas LMS participates in a bug bounty program through Bugcrowd, Inc. and has a
 ---
 
 ## Reflections
+# Team Reflection
+
+There were not many issues that occurred during our initial meeting and process. Sometimes people were late to meetings, but that was resolved quickly because it was out of their control. For example, I lost my internet connection for a part of the meeting and attended late. This was resolved quickly on my part by going to a friend’s apartment and using his internet connection. Communication from everyone has been clear and in a timely manner. A possible issue was that a lot of people had plans for the weekend already planned, so we finished the assignment a bit close to the due date. This has been fixed, everyone is equally motivated and ready to give it their all for this project. We foresee great outcomes.
+
 ---
