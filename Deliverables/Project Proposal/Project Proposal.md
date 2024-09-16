@@ -81,40 +81,54 @@ In our environment, Canvas-LSM is mainly used by students and professors across 
 - **Potential DocViewer Vulnerability**: The vulnerability with DocViewer will allow unauthorized access to locked or unpublished files through a specific URL. Breaking the CIA triad of Confidentiality, this could let a student see a test ahead of time or quiz, giving them the opportunity to steal it or be better prepared.
   
 - **Potential Cross-Site Scripting (XSS) Vulnerability**: Cross-site scripting is a type of security vulnerability that can be found in some web applications. The malicious actor can inject client-side scripts into a web page viewed by others, letting them bypass access controls. This could be used to see everyone’s grades, personal information, steal information from unreleased papers/exams, steal the exams if they are all uploaded but not available for view by students, and much more.
----
+
+### Software Security Features
+Canvas is an educational software platform. Due to this, many security features have been implemented in order to protect users
+data and ensure secure, authorized access. These security features help safeguard sensitive information while maintaining a secure and seamless user experience. Below is a list of various security features that exist within the Canvas software:
+- Two-Factor Authentication
+- Role-Based Access Control
+- Single Sign-On (OAUTH / SAML / LDAP)
+- Account Locking (failed login attempts)
+- Session Timeouts
+- Data Encryption / TLS
+- At Rest Data Stored Within Encrypted Volumes
+- Data Redundancies and Backups
+- Audit Logs
+- API Rate Limiting
+- CSRF Protection / XSS Protection
+- Granular Permissions (IP restrictions and time limits on quizzes)
+- Input Validation / Sanitation
+- Password Policies (length, characters, etc.)
+
+As we continue to research the software we expect to discover even more security features than the ones listed above. The above features were discovered by exploring the repository and from the Instructure Security site (https://www.instructure.com/trust-center/security).
 
 ## Motivation
+The motivation behind selecting this project stems from a couple different reasons. The first reason for selecting Canvas is that the project itself is active with regular pull requests and commits. There are approximately 500 open issues that need to be addressed, signaling to us that this software needs some assistance and potentially has security vulnerabilities. Along with that, Canvas provides a detailed guide to contributing to the project. This makes it easier for us to contribute and also tells us that they accept pull requests from developers. Another major factor for choosing Canvas was the fact that all of us regularly use the software as students at UNO. This allows us to spend less time figuring out the intended usage of the software and ultimately allows us to get further by having a sense of the necessary/implemented security requirements. It would also provide a sense of pride and accomplishment to be able to improve or fix the security of a software that we use regularly, especially Canvas. Lastly, our professor Dr. Robin Gandhi recommended Canvas as a good project choice.
 
----
+## Open-source Project Description
 
-## Software Description
-
----
-
-# Open-source Project Description
-
-## What is it?
+### What is it?
 Canvas LMS (Learning Management System) is an open-source e-learning platform developed by Instructure. It is designed to facilitate teaching and learning by providing an intuitive and robust digital classroom experience. Canvas offers tools for creating and managing online courses, including communication, grading, assignments, quizzes, and collaborations.
 
-## Contributors
+### Contributors
 Canvas LMS is primarily maintained by Instructure, the company that developed it. However, since it is open-source, contributions come from a broader community, including educators, developers, and organizations that extend or customize the platform. The core contributors are primarily Instructure employees, but outside developers contribute through bug fixes, feature enhancements, plugins, and integrations.
 
-## Activity
+### Activity
 Canvas LMS is an actively maintained project with regular releases and updates. It receives continuous development through GitHub, where Instructure and the community contribute to improvements. The repository has numerous contributors actively addressing issues, fixing bugs, and adding features based on user feedback. The activity is consistent, with frequent commits and discussions around issues and pull requests.
 
-## Use
+### Use
 Canvas LMS is widely used across the globe in educational institutions of all sizes, from small schools to large universities, as well as in corporate environments for employee training. Its flexible, scalable nature allows it to be customized to meet various needs in both formal education and professional development contexts. Canvas is used to facilitate online, hybrid, and traditional in-person courses.
 
-## Popularity
+### Popularity
 Canvas is one of the most popular LMS platforms worldwide, competing with other major LMS solutions such as Blackboard, Moodle, and Google Classroom. It has a large user base in higher education. Its open-source version, though used by fewer institutions compared to its hosted SaaS counterpart, still enjoys significant adoption by institutions looking for customizable, self-hosted solutions.
 
-## Languages Used
+### Languages Used
 Canvas LMS is primarily written in Ruby and JavaScript. Additionally, HTML, CSS, and other web technologies are used throughout the platform.
 
-## Platform
+### Platform
 Canvas LMS is a web-based application, and it is platform-agnostic. It runs on modern web browsers across different operating systems, including Windows, macOS, Linux, Android, and iOS. Canvas also provides mobile apps for Android and iOS to enhance accessibility for both students and instructors.
 
-## Documentation Sources
+### Documentation Sources
 Canvas LMS has extensive documentation available to developers and users. Key sources include:
 
 - [Canvas LMS GitHub Repository](https://github.com/instructure/canvas-lms): This is the primary source for developers, containing the source code, issues, and contribution guidelines.
@@ -142,7 +156,6 @@ All contributors must sign a contributor license agreement (CLA) before pull req
 
 Contributions can be made to Canvas through filing issues or submitting pull requests. To ensure a respectful, harassment-free experience for contributors and maintainers of this project, any inappropriate material will be removed, edited, or rejected. Examples include sexual language or imagery, derogatory comments, harassment, or other unprofessional behavior. Incidents may be reported by contacting the project maintainers or through opening an issue.
 
----
 
 ## Security-related History For The Software
 
@@ -163,10 +176,8 @@ Canvas LMS has faced several security issues over the years. Some notable issues
  
 Canvas LMS participates in a bug bounty program through Bugcrowd, Inc. and has addressed the above listed security issues through the release of patches and updates. Instructure performs application assessment and penetration testing annually using an Ongoing Bounty Program to identify and mitigate security vulnerabilities.
 
----
 
-## Reflections
-# Team Reflection
+## Team Reflection
 
 There were not many issues that occurred during our initial meeting and process. Sometimes people were late to meetings, but that was resolved quickly because it was out of their control. For example, I lost my internet connection for a part of the meeting and attended late. This was resolved quickly on my part by going to a friend’s apartment and using his internet connection. Communication from everyone has been clear and in a timely manner. A possible issue was that a lot of people had plans for the weekend already planned, so we finished the assignment a bit close to the due date. This has been fixed, everyone is equally motivated and ready to give it their all for this project. We foresee great outcomes.
 
