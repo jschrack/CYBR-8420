@@ -68,7 +68,7 @@ During configuration, Canvas requires admins to enter their own security keys, w
 ![System of Interest](engineering_drawing.png)
 
 ### Communication Flow Diagram
-![Communication Flow](communication_drawing.png)
+![Communication Flow](communication_diagram.png)
 
 ---
 
