@@ -70,6 +70,17 @@ During configuration, Canvas requires admins to enter their own security keys, w
 ### Communication Flow Diagram
 ![Communication Flow](communication_diagram.png)
 
+### Threats Perceived by Users
+
+In our environment, Canvas-LSM is mainly used by students and professors across the country. There are thousands of users who store their password and student ID on Canvas, and they also assume that their grades and information will stay private. As users ourselves of Canvas-LSM, we must consider some of the perceived users we see as students.
+
+- **Black Hat Hacker**: An individual who would try to gain access to the password/username database to obtain system credentials. The attacker would be acting maliciously, to release the grades of students, release papers or homework of students submitted. Malicious actors can also use student credentials to access online library resources for research papers and other information.
+  
+- **Malicious Contributor**: A bad actor or actors can contribute to open-source projects maliciously. They can pretend to be good contributors, gaining access to the project if they need to request permission. A malicious contributor could do damage initially or wait until later to change code that will benefit them, such as collecting personal information of students, homework, or creating vulnerabilities intentionally.
+  
+- **Potential DocViewer Vulnerability**: The vulnerability with DocViewer will allow unauthorized access to locked or unpublished files through a specific URL. Breaking the CIA triad of Confidentiality, this could let a student see a test ahead of time or quiz, giving them the opportunity to steal it or be better prepared.
+  
+- **Potential Cross-Site Scripting (XSS) Vulnerability**: Cross-site scripting is a type of security vulnerability that can be found in some web applications. The malicious actor can inject client-side scripts into a web page viewed by others, letting them bypass access controls. This could be used to see everyone’s grades, personal information, steal information from unreleased papers/exams, steal the exams if they are all uploaded but not available for view by students, and much more.
 ---
 
 ## Motivation
