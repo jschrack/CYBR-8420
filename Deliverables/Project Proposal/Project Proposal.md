@@ -176,6 +176,9 @@ Canvas LMS has faced several security issues over the years. Some notable issues
  
 Canvas LMS participates in a bug bounty program through Bugcrowd, Inc. and has addressed the above listed security issues through the release of patches and updates. Instructure performs application assessment and penetration testing annually using an Ongoing Bounty Program to identify and mitigate security vulnerabilities.
 
+## Attribution
+
+We used Google Gemini, OpenAI ChatGPT, and Meta AI for formatting and minor editing.
 
 ## Team Reflection
 
