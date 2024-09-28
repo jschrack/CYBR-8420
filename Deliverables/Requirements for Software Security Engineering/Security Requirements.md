@@ -15,7 +15,17 @@ An unauthorized student gains access to the gradebook system with an objective t
 
 
 ### Interaction 3 - Geoff
-### Interaction 4 - Jesse
+### Misuse Case 4 - Institution admin adds a user
+![Misuse Case 2 - Instrutor udpates gradebook](./Diagrams/Interaction-4-Diagram.png)
+
+**Use Case**
+
+An institution admin adds a user to the system (Professor, student, admin, etc..).
+
+**Misuse Case**
+A malicious user/hacker creates an unauthorized user utlizing techniques like SQL injection, cross-site scripting, man-in-the-middle, insecure direct object referecnes, and brute force attacks.
+
+
 ### Interaction 5 - Mark
 
 ## AI Prompt
@@ -24,6 +34,11 @@ An unauthorized student gains access to the gradebook system with an objective t
 
  - Input Validation- Implement strict input validation to defend against SQL injection attacks using JavaScript or HTML5 to manage input validation parameters.
  - Access Control- Utilize session timeouts and CAPTCHA as means of access control. Session timeouts log a user out after a predetermined duration of inactivity. CAPTCHA requires text-based, image-based, or audio verification to prevent unauthorized access.
+ - Rate Limiting - Limit the amount of requests from a user/device to prevent brute force attempts and DDOS attacks.
+ - Multi-factor Authentication - Utilize multiple authentication methods to prevent unauthorized access to accounts, especially privelleged ones.
+ - Audit Logging - Keeping detailed logs of user interactions with the system in order to detect and prevent misuses.
+ - Indirect References - Utilize indirect references (use claims/token to validate user/input) to prevent insecure direct object references.
+ - HTTPS - Ensure all web traffic is served over HTTPS by using SSL/TLS certificates.
 
 ## Security Requirements Assesment
 
