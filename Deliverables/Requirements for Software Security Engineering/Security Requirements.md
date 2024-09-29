@@ -1,4 +1,4 @@
-q# CYBR-8420 Requirements for Software Security Engineering
+## CYBR-8420 Requirements for Software Security Engineering
 
 ## Use Case Diagrams
 
@@ -49,7 +49,7 @@ A malicious user/hacker creates an unauthorized user utlizing techniques like SQ
 
 
 
-### Interaction 5 - Mark
+### Misuse Case 5 - Student views a grade
 ![Misuse Case 5 - Student Views a Grade](./Diagrams/Interaction-5-Diagram.png)
 
 **Use Case**
