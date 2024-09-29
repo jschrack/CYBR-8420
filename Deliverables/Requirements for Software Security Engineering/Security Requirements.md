@@ -52,10 +52,12 @@ Canvas LMS advertises the following security features that mitigate security req
    - Session Timeouts
    - Role-Based Access Control (RBAC)
 
+## Security-related Configuration and Installation Issues
+
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/2/views/1)
 
-## Individual Contribution Summaries
+## Individual Contributions
 ### Augusto
 ### Deb
 
