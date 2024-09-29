@@ -25,8 +25,8 @@ An instructor logs into the gradebook system to update students' grades.
 An unauthorized student gains access to the gradebook system with an objective to manipulate the gradebook, either by altering their own grades or those of their peers by using Session Hijacking, Cross-Site Request Forgery (CSRF), or SQL injection.
 
 
-### Misuse Case 3 - Geoff
-![Misuse Case 3 - Rouge User Gains Unauthorized Access to Application Cache](./Diagrams/Interaction-3-Diagram.png)
+### Misuse Case 3 - Rogue User Gains Unauthorized Access to Application Cache
+![Misuse Case 3 - Rogue User Gains Unauthorized Access to Application Cache](./Diagrams/Interaction-3-Diagram.png)
 
 **Use Case**
 
@@ -142,6 +142,9 @@ Canvas LMS advertises the following security features that mitigate security req
 - Researched OSS security configuration / installation documentation for Canvas LMS and contributed this section in Part II of the assignment
   
 ### Geoff
+
+- Completed misuse case analysis for application cache access
+
 ### Jesse
 ### Mark
 ## Team Reflection
