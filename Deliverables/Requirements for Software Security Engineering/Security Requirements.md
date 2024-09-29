@@ -3,7 +3,7 @@
 ## Use Case Diagrams
 
 ### Misuse Case 1 - Administrator Updating Software
-![AugustoDiagram](https://github.com/user-attachments/assets/ec84fae2-5400-4e60-b7a4-fa45550d0d6f)
+![AugustoDiagram](./Diagrams/Interaction-1-Diagram.png)
 
 **Use Case**
 
