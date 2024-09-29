@@ -23,8 +23,8 @@ An instructor logs into the gradebook system to update students' grades.
 An unauthorized student gains access to the gradebook system with an objective to manipulate the gradebook, either by altering their own grades or those of their peers by using Session Hijacking, Cross-Site Request Forgery (CSRF), or SQL injection.
 
 
-### Interaction 3 - Geoff
-
+### Misuse Case 3 - Geoff
+![Misuse Case 3 - Rouge User Gains Unauthorized Access to Application Cache](./Diagrams/Interaction-3-Diagram.png)
 
 **Use Case**
 
@@ -33,6 +33,7 @@ The web server accesses the application cache to improve user experience and red
 **Misuse cases**
 
 A rogue user manipulates the access cache to authenticate as a different user, to steal private information from other users, or to view quiz answers.
+
 ### Interaction 4 - Jesse
 
 ### Misuse Case 4 - Institution admin adds a user
