@@ -1,8 +1,9 @@
 # CYBR-8420 Requirements for Software Security Engineering
 
 ## Use Case Diagrams
-### Misuse Case 1 - Augusto
+### Misuse Case 1 - Administrator Updating Software
 ![AugustoDiagram](https://github.com/user-attachments/assets/ec84fae2-5400-4e60-b7a4-fa45550d0d6f)
+
 **Use Case**
 
 An administrator is trying to update the source code to fix some minor issues.
@@ -130,6 +131,8 @@ Canvas LMS advertises the following security features that mitigate security req
 
 ## Individual Contributions
 ### Augusto
+- Completed misuse case analysis for Administrator Updating Software.
+- Built a list of security requirements dervied from misuse case analysis, and used AI (ChatGPT) to improve in my assessment.
 ### Deb
 
 - Completed misuse case analysis for the instructor / gradebook relationship
