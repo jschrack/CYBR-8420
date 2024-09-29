@@ -14,7 +14,7 @@ An administrator is trying to update the source code to fix some minor issues.
 A malicious contributor modifies the code in the hopes that the administrator updates the program with their code, for the intent of stealing administrators log in credentials or creating new vulnerabilities so the threat actor can modify student grades.
 
 ### Misuse Case 2 - Student updates gradebook
-![Misuse Case 2 - Instrutor udpates gradebook](https://github.com/jschrack/CYBR-8420/blob/peachykeen00-patch-1/Deliverables/Requirements%20for%20Software%20Security%20Engineering/Misuse-Case2.png)
+![Misuse Case 2 - Instrutor udpates gradebook](./Diagrams/Interaction-2.png)
 
 **Use Case**
 
@@ -36,7 +36,6 @@ The web server accesses the application cache to improve user experience and red
 
 A rogue user manipulates the access cache to authenticate as a different user, to steal private information from other users, or to view quiz answers.
 
-### Interaction 4 - Jesse
 
 ### Misuse Case 4 - Institution admin adds a user
 ![Misuse Case 2 - Instrutor udpates gradebook](./Diagrams/Interaction-4-Diagram.png)
