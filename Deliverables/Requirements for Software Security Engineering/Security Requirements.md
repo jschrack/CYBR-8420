@@ -24,6 +24,17 @@ An unauthorized student gains access to the gradebook system with an objective t
 
 
 ### Interaction 3 - Geoff
+
+
+**Use Case**
+
+The web server accesses the application cache to improve user experience and reduce load on the database server.
+
+**Misuse cases**
+
+A rogue user manipulates the access cache to authenticate as a different user, to steal private information from other users, or to view quiz answers.
+### Interaction 4 - Jesse
+
 ### Misuse Case 4 - Institution admin adds a user
 ![Misuse Case 2 - Instrutor udpates gradebook](./Diagrams/Interaction-4-Diagram.png)
 
@@ -33,6 +44,7 @@ An institution admin adds a user to the system (Professor, student, admin, etc..
 
 **Misuse Case**
 A malicious user/hacker creates an unauthorized user utlizing techniques like SQL injection, cross-site scripting, man-in-the-middle, insecure direct object referecnes, and brute force attacks.
+
 
 
 ### Interaction 5 - Mark
