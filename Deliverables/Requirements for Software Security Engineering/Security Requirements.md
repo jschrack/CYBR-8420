@@ -1,4 +1,4 @@
-# CYBR-8420 Requirements for Software Security Engineering
+q# CYBR-8420 Requirements for Software Security Engineering
 
 ## Use Case Diagrams
 
@@ -123,7 +123,8 @@ By implementing these safeguards, you can significantly reduce the risk of malic
 -	Penetration Testing / Security Audits - Regularly conduct penetration tests or security audits to identify vulnerabilities that may have been introduced, using tools like OWASP ZAP to find injection flaws or other weaknesses.
 -	Trusted Contributor Programs - Limit write access to trusted contributors or maintainers and use digital signatures for contributions to ensure code authenticity.
 -	Fully Specified Cache Entry Names incorporating session id, unique field identifier, and user id.
-- Additional Cache Security Controls: While somewhat out of scope, these could include purging/expiration, rate limiting, encryption, monitoring/logging, and constant time access.
+-  Additional Cache Security Controls: While somewhat out of scope, these could include purging/expiration, rate limiting, encryption, monitoring/logging, and constant time access.
+-  Least Privilege Policy - Limits user access to only the resources they need to perform their job responsibilities.
 
 ## Security Requirements Assesment
 
