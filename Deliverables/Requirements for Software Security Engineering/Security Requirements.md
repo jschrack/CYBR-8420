@@ -57,6 +57,7 @@ A malicious user/hacker creates an unauthorized user utlizing techniques like SQ
 A student is trying to access their grades.
 
 **Misuse Case**
+
 An unauthorized user validates as another user or another user as a user with higher privilege, and uses it to view other students' grades. 
 
 
