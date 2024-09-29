@@ -24,6 +24,14 @@ An unauthorized student gains access to the gradebook system with an objective t
 
 
 ### Interaction 3 - Geoff
+
+**Use Case**
+
+The web server accesses the application cache to improve user experience and reduce load on the database server.
+
+**Misuse cases**
+
+A rogue user manipulates the access cache to authenticate as a different user, to steal private information from other users, or to view quiz answers.
 ### Interaction 4 - Jesse
 ### Interaction 5 - Mark
 
