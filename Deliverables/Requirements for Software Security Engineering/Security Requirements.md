@@ -137,6 +137,15 @@ Canvas LMS advertises the following security features that mitigate security req
  - Access Controls:
    - Session Timeouts
    - Role-Based Access Control (RBAC)
+ - Automated Static Code Analysis:
+   - All code goes through a developer peer-review process before it is merged into the code base repository
+   - All applications builds are automatically scanned for security vulnerabilities and must pass prior to deployment.
+ - Pentesting/Security Audits:
+   - Canvas-LMS did not mentioned what program they used for Pentesting, potential recommendation OWASP ZAP.
+   - Private Bug Bounty Program
+- Trusted Contributor Program:
+   - Private Bug Bounty Program, users have to apply and submit their Bugcrowd profile.
+
 
 ## Security-related Configuration and Installation Issues
 
