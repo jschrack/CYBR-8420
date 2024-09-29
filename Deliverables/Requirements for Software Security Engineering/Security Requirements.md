@@ -50,6 +50,15 @@ A malicious user/hacker creates an unauthorized user utlizing techniques like SQ
 
 
 ### Interaction 5 - Mark
+![Misuse Case 5 - Student Views a Grade](./Diagrams/Interaction-5-Diagram.png)
+
+**Use Case**
+
+A student is trying to access their grades.
+
+**Misuse Case**
+An unauthorized user validates as another user or another user as a user with higher privilege, and uses it to view other students' grades. 
+
 
 ## AI Prompt
 
