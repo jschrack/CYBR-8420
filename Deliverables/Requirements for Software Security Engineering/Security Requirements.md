@@ -151,6 +151,7 @@ Canvas LMS generally has thorough and impressive documentation on its' software 
  3. The instructions assume a certain level of familiarity with the software, risking the chance that less experienced users may inadvertantly expose themselves to security risks.
  4. While instructions do mention inserting randomized strings of at least 20 characters in the security.yml files, there is not guidance on how to generate these strings securely (e.g. - through the use of a password manager, cryptographic library, or command-line tool)
  5. The interactive prompt for creating an administrator account doesn't mention the importance of using a strong, unique password (based on a robust password policy).
+ 6. The documentation briefly mentions Redis and memcache support but lacks specific guidance on application cache configuration and authentication. While cache server security is out of scope, the security of communications with the cache server are not. Compromised cache access could cause a complete failure of Canvas user authorization mechanisms. For this reason, some configuration recommendations would be appropriate.
 
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/2/views/1)
