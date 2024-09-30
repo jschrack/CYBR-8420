@@ -60,51 +60,39 @@ A student is trying to access their grades.
 
 An unauthorized user validates as another user or another user as a user with higher privilege, and uses it to view other students' grades. 
 
-
 ## AI Prompt
 
 While working on my Misuse Case, I initially created a chart that resembled more of a spaghetti dinner. I had way too many circles, prompts, solutions, and lines going everywhere. It was hard for me to pinpoint what I needed to do and clear the mess so it wasn’t impossible to read. After using a few prompts on ChatGPT, I was able to eliminate a lot of the issues I had and ended up with a clearer diagram. Some of my prompts were:
 
-### **Prompt**  
-Pretend you are a senior developer working on open-source software. Give me 5 issues that a malicious contributor can create and 5 solutions.
+**Prompt**  
+ Pretend you are a senior developer working on open-source software. Give me 5 issues that a malicious contributor can create and 5 solutions.
 
-### **Answer**  
-As a senior developer working on an open-source software project, here are five issues that a malicious contributor could introduce, along with five solutions to mitigate these risks:
+**Answer**  
+ As a senior developer working on an open-source software project, here are five issues that a malicious contributor could introduce, along with five solutions to mitigate these risks: 
 
-### **Issues a Malicious Contributor Can Create:**
-
-1. **Backdoor Implementation**  
+#### *Issues a Malicious Contributor Can Create:*
+1. *Backdoor Implementation*  
    A malicious contributor might add hidden backdoors into the code, allowing unauthorized access to the system.
-
-2. **SQL Injection Vulnerabilities**  
+2. *SQL Injection Vulnerabilities*  
    They could introduce insecure code that is vulnerable to SQL injection attacks, compromising the application's database.
-
-3. **Credential Theft**  
+3. *Credential Theft*  
    The contributor may modify code to collect and exfiltrate sensitive information, such as admin passwords or tokens, to an external server.
-
-4. **Malicious Dependencies**  
+4. *Malicious Dependencies*  
    They might introduce or modify dependencies that include malware or have known vulnerabilities, compromising the security of the entire application.
-
-5. **Denial of Service (DoS) Mechanisms**  
+5. *Denial of Service (DoS) Mechanisms*  
    A contributor could insert code that triggers a resource exhaustion or infinite loop, leading to performance issues or system crashes, causing a denial of service.
 
-### **Solutions to Mitigate These Issues:**
-
-1. **Code Review and Approval Process**  
+#### *Solutions to Mitigate These Issues:*
+1. *Code Review and Approval Process*  
    Enforce strict peer-review processes for every contribution. Ensure that multiple trusted developers review and approve code changes before they are merged into the main project.
-
-2. **Automated Static Code Analysis**  
+2. *Automated Static Code Analysis*  
    Use automated tools (e.g., SonarQube, Checkmarx) to scan code for vulnerabilities such as backdoors, SQL injection risks, and other security flaws before accepting contributions.
-
-3. **Dependency Scanning Tools**  
+3. *Dependency Scanning Tools*  
    Implement automated tools (like Dependabot, Snyk) to scan for vulnerabilities in third-party dependencies and ensure only safe libraries are used in the project.
-
-4. **Penetration Testing and Security Audits**  
+4. *Penetration Testing and Security Audits*  
    Conduct regular penetration tests and security audits on the project, especially after significant changes. Use tools like OWASP ZAP or Burp Suite to identify potential vulnerabilities.
-
-5. **Digital Signature Verification for Contributions**  
+5. *Digital Signature Verification for Contributions*  
    Use digital signatures for all commits to ensure that code is coming from a trusted contributor. Additionally, restrict merge privileges to a small group of trusted maintainers who review all contributions.
-
 
 By implementing these safeguards, you can significantly reduce the risk of malicious contributions compromising the security of an open-source project.
 
@@ -147,20 +135,39 @@ Canvas LMS advertises the following security features that mitigate security req
    - Private Bug Bounty Program, users have to apply and submit their Bugcrowd profile.
 
 
-## Security-related Configuration and Installation Issues
+## Security-related Configuration and Installation Issues Documentation Review
+
+Canvas LMS generally has thorough and impressive documentation on its' software installation and configuration. However, there were some security-related holes present in the documentation. We reviewed both the Quick Start and Production Start OSS documentation and discovered the following potential shortfalls:
+
+### *Quick Start*
+
+ 1. Documentation doesn't clearly emphasize the importance of changing default username and passwords.
+ 2. Instructions are not provided for applying security patches and updates.
+
+### *Production Start*
+
+ 1. Environmental security isn't addressed, neglecting the security of the hosting environment, such as cloud configurations and firewall settings.
+ 2. Documentation lacks emphasis on using HTTPS over HTTP and could clarify that useres should avoid using any unsecured protocols.
+ 3. The instructions assume a certain level of familiarity with the software, risking the chance that less experienced users may inadvertantly expose themselves to security risks.
+ 4. While instructions do mention inserting randomized strings of at least 20 characters in the security.yml files, there is not guidance on how to generate these strings securely (e.g. - through the use of a password manager, cryptographic library, or command-line tool)
+ 5. The interactive prompt for creating an administrator account doesn't mention the importance of using a strong, unique password (based on a robust password policy).
 
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/2/views/1)
 
 ## Individual Contributions
+
 ### Augusto
+
 - Completed misuse case analysis for Administrator Updating Software.
 - Built a list of security requirements dervied from misuse case analysis, and used AI (ChatGPT) to improve in my assessment.
+  
 ### Deb
 
 - Completed misuse case analysis for the instructor / gradebook relationship
 - Built list of security requirements dervied from misuse case analysis and compared them to advertised security features of software to determine sufficiency of current security features
-- Researched OSS security configuration / installation documentation for Canvas LMS and contributed this section in Part II of the assignment
+- Researched OSS security configuration / installation documentation for Canvas LMS and contributed this section in "Part 2" of the assignment
+- Completed the Team Reflection for this week's assignment
   
 ### Geoff
 
@@ -169,8 +176,9 @@ Canvas LMS advertises the following security features that mitigate security req
 - Asked Google Gemini if it had any more ideas
 
 ### Jesse
+
 ### Mark
 
 ## Team Reflection
 
-Our team continues to work well together. We set up regular team meetings to check in with one another, ensuring we're on the same page and understand our coursework and roles in our assignments. Everyone is respectful and helpful in conveying their ideas. We made sure to incorporate comments into our reviews of pull requests, using feedback from Dr. Gandhi to refine our process. The one area that we all agreed could use some improvement was submission of our individual assignemnt contributions earlier in the week, allowing other teammates ample time to review pull requests, provide comments, and update our product. Overall, we continue to all maintain our best efforts and are eager to learn how we can improve going forward.
+Our team continues to work well together. We set up regular team meetings to check in with one another, ensuring we're on the same page and understand our coursework and roles in our assignments. Everyone is respectful and helpful in conveying their ideas. We made sure to incorporate comments into our pull request (PR) reviews, using feedback from Dr. Gandhi to refine our process. The one area that we all agreed could use some improvement was submission of our individual assignemnt contributions earlier in the week, allowing other teammates ample time to review PRs, provide comments, and update our product. Overall, we all continue to maintain our best efforts and are eager to learn how we can improve going forward.
