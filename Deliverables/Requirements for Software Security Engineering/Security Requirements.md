@@ -170,6 +170,7 @@ Canvas LMS advertises the following security features that mitigate security req
 
 ### Jesse
 ### Mark
+
 ## Team Reflection
 
-
+Our team continues to work well together. We set up regular team meetings to check in with one another, ensuring we're on the same page and understand our coursework and roles in our assignments. Everyone is respectful and helpful in conveying their ideas. We made sure to incorporate comments into our reviews of pull requests, using feedback from Dr. Gandhi to refine our process. The one area that we all agreed could use some improvement was submission of our individual assignemnt contributions earlier in the week, allowing other teammates ample time to review pull requests, provide comments, and update our product. Overall, we continue to all maintain our best efforts and are eager to learn how we can improve going forward.
