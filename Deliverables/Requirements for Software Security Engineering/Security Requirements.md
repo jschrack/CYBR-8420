@@ -45,6 +45,7 @@ A rogue user manipulates the access cache to authenticate as a different user, t
 An institution admin adds a user to the system (Professor, student, admin, etc..).
 
 **Misuse Case**
+
 A malicious user/hacker creates an unauthorized user utlizing techniques like SQL injection, cross-site scripting, man-in-the-middle, insecure direct object referecnes, and brute force attacks.
 
 
@@ -152,6 +153,8 @@ Canvas LMS generally has thorough and impressive documentation on its' software 
  4. While instructions do mention inserting randomized strings of at least 20 characters in the security.yml files, there is not guidance on how to generate these strings securely (e.g. - through the use of a password manager, cryptographic library, or command-line tool)
  5. The interactive prompt for creating an administrator account doesn't mention the importance of using a strong, unique password (based on a robust password policy).
  6. The documentation briefly mentions Redis and memcache support but lacks specific guidance on application cache configuration and authentication. While cache server security is out of scope, the security of communications with the cache server are not. Compromised cache access could cause a complete failure of Canvas user authorization mechanisms. For this reason, some configuration recommendations would be appropriate.
+ 7. The documentation should emphasize regular updates and patching to ensure security vulnerabilities are addressed.
+ 8. The documentation lacks security recommendations when setting up the database. They should recommend using encrypted connections and securly storing database credentials.
 
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/2/views/1)
@@ -178,6 +181,9 @@ Canvas LMS generally has thorough and impressive documentation on its' software 
 
 ### Jesse
 
+- Completed misuse case analysis for adding a user.
+- Added security requirements dervied from analysis to the list of security requirements. 
+- Added improvements/recommendations for improving the production quickstart documentation.
 ### Mark
 
 ## Team Reflection
