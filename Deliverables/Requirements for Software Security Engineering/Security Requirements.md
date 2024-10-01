@@ -137,8 +137,8 @@ Canvas LMS advertises/includes the following security features that mitigate sec
    - Private Bug Bounty Program, users have to apply and submit their Bugcrowd profile.
 - Indirect References
 
- Our misuse case analysis has derived a handful of security requirements. It has allowed us to take a deep look into specific use cases and determine the types of security requirements are neccessary. Many of these security requirements can be applied to other use cases of the system and gives us a solid list of requirements to keep in mind while exploring the codebase for potential security improvements. For each security requirement, there are many places within the codebase where these requirements are applicable. Things like cache security and indirect references can be present throughout the entire software and will require a deeper analysis to determine if every use case is covered.
- 
+Our misuse case analysis has derived a handful of security requirements. It has allowed us to take a deep look into specific use cases and determine the types of security requirements that are necessary. Many of these security requirements can be applied to other use cases of the system and gives us a solid list of requirements to keep in mind while exploring the codebase for potential security improvements. For each security requirement, there are many places within the codebase where these requirements are applicable. Things like cache security and indirect references can be present throughout the entire software and will require a deeper analysis to determine if every use case is covered.
+
 ## Security-related Configuration and Installation Issues Documentation Review
 
 Canvas LMS generally has thorough and impressive documentation on its software installation and configuration. However, there were some security-related holes present in the documentation. We reviewed both the Quick Start and Production Start OSS documentation and discovered the following potential shortfalls:
