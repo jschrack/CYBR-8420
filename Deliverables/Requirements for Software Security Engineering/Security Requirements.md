@@ -14,7 +14,7 @@ An administrator is trying to update the source code to fix some minor issues.
 A malicious contributor modifies the code in the hopes that the administrator updates the program with their code, for the intent of stealing administrators log in credentials or creating new vulnerabilities so the threat actor can modify student grades.
 
 ### Misuse Case 2 - Student updates gradebook
-![Misuse Case 2 - Instrutor udpates gradebook](./Diagrams/Interaction-2.png)
+![Misuse Case 2 - Instructor updates gradebook](./Diagrams/Interaction-2.png)
 
 **Use Case**
 
@@ -38,7 +38,7 @@ A rogue user manipulates the access cache to authenticate as a different user, t
 
 
 ### Misuse Case 4 - Institution admin adds a user
-![Misuse Case 2 - Instrutor udpates gradebook](./Diagrams/Interaction-4-Diagram.png)
+![Misuse Case 2 - Instructor updates gradebook](./Diagrams/Interaction-4-Diagram.png)
 
 **Use Case**
 
@@ -46,7 +46,7 @@ An institution admin adds a user to the system (Professor, student, admin, etc..
 
 **Misuse Case**
 
-A malicious user/hacker creates an unauthorized user utlizing techniques like SQL injection, cross-site scripting, man-in-the-middle, insecure direct object referecnes, and brute force attacks.
+A malicious user/hacker creates an unauthorized user utilizing techniques like SQL injection, cross-site scripting, man-in-the-middle, insecure direct object references, and brute force attacks.
 
 
 
@@ -104,7 +104,7 @@ By implementing these safeguards, you can significantly reduce the risk of malic
  - Input Validation- Implement strict input validation to defend against SQL injection attacks using JavaScript or HTML5 to manage input validation parameters.
  - Access Control- Utilize session timeouts and CAPTCHA as means of access control. Session timeouts log a user out after a predetermined duration of inactivity. CAPTCHA requires text-based, image-based, or audio verification to prevent unauthorized access.
  - Rate Limiting - Limit the amount of requests from a user/device to prevent brute force attempts and DDOS attacks.
- - Multi-factor Authentication - Utilize multiple authentication methods to prevent unauthorized access to accounts, especially privelleged ones.
+ - Multi-factor Authentication - Utilize multiple authentication methods to prevent unauthorized access to accounts, especially privileged ones.
  - Audit Logging - Keeping detailed logs of user interactions with the system in order to detect and prevent misuses.
  - Indirect References - Utilize indirect references (use claims/token to validate user/input) to prevent insecure direct object references.
  - HTTPS - Ensure all web traffic is served over HTTPS by using SSL/TLS certificates.
@@ -115,7 +115,7 @@ By implementing these safeguards, you can significantly reduce the risk of malic
 -  Additional Cache Security Controls: While somewhat out of scope, these could include purging/expiration, rate limiting, encryption, monitoring/logging, and constant time access.
 -  Least Privilege Policy - Limits user access to only the resources they need to perform their job responsibilities.
 
-## Security Requirements Assesment
+## Security Requirements Assessment
 
 Canvas LMS advertises the following security features that mitigate security requirements derived from the misuse case analyses.
 
@@ -128,17 +128,17 @@ Canvas LMS advertises the following security features that mitigate security req
    - Role-Based Access Control (RBAC)
  - Automated Static Code Analysis:
    - All code goes through a developer peer-review process before it is merged into the code base repository
-   - All applications builds are automatically scanned for security vulnerabilities and must pass prior to deployment.
+   - All application builds are automatically scanned for security vulnerabilities and must pass prior to deployment.
  - Pentesting/Security Audits:
-   - Canvas-LMS did not mentioned what program they used for Pentesting, potential recommendation OWASP ZAP.
+   - Canvas-LMS did not mention what program they used for Pentesting, potential recommendation OWASP ZAP.
    - Private Bug Bounty Program
 - Trusted Contributor Program:
    - Private Bug Bounty Program, users have to apply and submit their Bugcrowd profile.
 
-
+After reviewing the software project documentation and codebase, we have determined that many of our derived security requirements from misuse case analysis are present within the software. 
 ## Security-related Configuration and Installation Issues Documentation Review
 
-Canvas LMS generally has thorough and impressive documentation on its' software installation and configuration. However, there were some security-related holes present in the documentation. We reviewed both the Quick Start and Production Start OSS documentation and discovered the following potential shortfalls:
+Canvas LMS generally has thorough and impressive documentation on its software installation and configuration. However, there were some security-related holes present in the documentation. We reviewed both the Quick Start and Production Start OSS documentation and discovered the following potential shortfalls:
 
 ### *Quick Start*
 
@@ -148,13 +148,13 @@ Canvas LMS generally has thorough and impressive documentation on its' software 
 ### *Production Start*
 
  1. Environmental security isn't addressed, neglecting the security of the hosting environment, such as cloud configurations and firewall settings.
- 2. Documentation lacks emphasis on using HTTPS over HTTP and could clarify that useres should avoid using any unsecured protocols.
- 3. The instructions assume a certain level of familiarity with the software, risking the chance that less experienced users may inadvertantly expose themselves to security risks.
+ 2. Documentation lacks emphasis on using HTTPS over HTTP and could clarify that users should avoid using any unsecured protocols.
+ 3. The instructions assume a certain level of familiarity with the software, risking the chance that less experienced users may inadvertently expose themselves to security risks.
  4. While instructions do mention inserting randomized strings of at least 20 characters in the security.yml files, there is not guidance on how to generate these strings securely (e.g. - through the use of a password manager, cryptographic library, or command-line tool)
  5. The interactive prompt for creating an administrator account doesn't mention the importance of using a strong, unique password (based on a robust password policy).
  6. The documentation briefly mentions Redis and memcache support but lacks specific guidance on application cache configuration and authentication. While cache server security is out of scope, the security of communications with the cache server are not. Compromised cache access could cause a complete failure of Canvas user authorization mechanisms. For this reason, some configuration recommendations would be appropriate.
  7. The documentation should emphasize regular updates and patching to ensure security vulnerabilities are addressed.
- 8. The documentation lacks security recommendations when setting up the database. They should recommend using encrypted connections and securly storing database credentials.
+ 8. The documentation lacks security recommendations when setting up the database. They should recommend using encrypted connections and securely storing database credentials.
 
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/2/views/1)
@@ -164,32 +164,28 @@ Canvas LMS generally has thorough and impressive documentation on its' software 
 ### Augusto
 
 - Completed misuse case analysis for Administrator Updating Software.
-- Built a list of security requirements dervied from misuse case analysis, and used AI (ChatGPT) to improve in my assessment.
+- Built a list of security requirements derived from misuse case analysis, and used AI (ChatGPT) to improve my assessment.
   
 ### Deb
 
 - Completed misuse case analysis for the instructor / gradebook relationship
-- Built list of security requirements dervied from misuse case analysis and compared them to advertised security features of software to determine sufficiency of current security features
+- Built list of security requirements derived from misuse case analysis and compared them to advertised security features of software to determine sufficiency of current security features
 - Researched OSS security configuration / installation documentation for Canvas LMS and contributed this section in "Part 2" of the assignment
 - Completed the Team Reflection for this week's assignment
   
 ### Geoff
 
 - Completed misuse case analysis for application cache access
-- Built list of security requriements derived from misuse case analysis
+- Built list of security requirements derived from misuse case analysis
 - Asked Google Gemini if it had any more ideas
 
 ### Jesse
 
 - Completed misuse case analysis for adding a user.
-- Added security requirements dervied from analysis to the list of security requirements. 
+- Added security requirements derived from analysis to the list of security requirements. 
 - Added improvements/recommendations for improving the production quickstart documentation.
-  
 ### Mark
-
-- Completed use case/misuse case chart for a student viewing a grade.
-- Added relevant security requirments and added to security requirements assesment from the misuse case. 
 
 ## Team Reflection
 
-Our team continues to work well together. We set up regular team meetings to check in with one another, ensuring we're on the same page and understand our coursework and roles in our assignments. Everyone is respectful and helpful in conveying their ideas. We made sure to incorporate comments into our pull request (PR) reviews, using feedback from Dr. Gandhi to refine our process. The one area that we all agreed could use some improvement was submission of our individual assignemnt contributions earlier in the week, allowing other teammates ample time to review PRs, provide comments, and update our product. Overall, we all continue to maintain our best efforts and are eager to learn how we can improve going forward.
+Our team continues to work well together. We set up regular team meetings to check in with one another, ensuring we're on the same page and understand our coursework and roles in our assignments. Everyone is respectful and helpful in conveying their ideas. We made sure to incorporate comments into our pull request (PR) reviews, using feedback from Dr. Gandhi to refine our process. The one area that we all agreed could use some improvement was submission of our individual assignment contributions earlier in the week, allowing other teammates ample time to review PRs, provide comments, and update our product. Overall, we all continue to maintain our best efforts and are eager to learn how we can improve going forward.
