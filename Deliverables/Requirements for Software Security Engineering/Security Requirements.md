@@ -134,8 +134,7 @@ Canvas LMS advertises the following security features that mitigate security req
    - Private Bug Bounty Program
 - Trusted Contributor Program:
    - Private Bug Bounty Program, users have to apply and submit their Bugcrowd profile.
-
-After reviewing the software project documentation and codebase, we have determined that many of our derived security requirements from misuse case analysis are present within the software. 
+ 
 ## Security-related Configuration and Installation Issues Documentation Review
 
 Canvas LMS generally has thorough and impressive documentation on its software installation and configuration. However, there were some security-related holes present in the documentation. We reviewed both the Quick Start and Production Start OSS documentation and discovered the following potential shortfalls:
