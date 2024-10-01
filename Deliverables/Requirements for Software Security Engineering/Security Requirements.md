@@ -183,7 +183,12 @@ Canvas LMS generally has thorough and impressive documentation on its software i
 - Completed misuse case analysis for adding a user.
 - Added security requirements derived from analysis to the list of security requirements. 
 - Added improvements/recommendations for improving the production quickstart documentation.
+  
 ### Mark
+
+- Completed use case/misuse case chart for a student viewing a grade.
+- Added relevant security requirements and added to security requirements assessment from the misuse case. 
+
 
 ## Team Reflection
 
