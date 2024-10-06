@@ -1,7 +1,7 @@
 # CYBR-8420 Assurance Cases
 
 ## Link to Project Board
-[Click here to view the board](https://github.com/users/ghumphr/projects/1/views/1)
+[Click here to view the board](https://github.com/users/jschrack/projects/4/views/1)
 
 ---
 
