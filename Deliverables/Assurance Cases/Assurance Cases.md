@@ -43,7 +43,7 @@
 ----
 
 ### **Claim 5 - Mark**
-![Assurance Case 5](./Diagrams/your-diagram.png)
+![Assurance Case 5](./Diagrams/AssuranceCaseDiagram.png)
 
 **Part 2 Assessment** - 
 
