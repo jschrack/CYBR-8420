@@ -9,9 +9,16 @@
 ## Claims
 
 ### **Claim 1 - Augusto**
-![Assurance Case 1](./Diagrams/your-diagram.png)
+![Assurance Case 1](./Diagrams/Assurance-Case-1.png)
 
 **Part 2 Assessment** - 
+*E1 – Application Security Process*: Canvas LMS takes many steps to prevent pushing a known vulnerability into their patches, one of the steps is doing Security Audits, which they release to the public, latest one here [Canvas Security Audit 2023](https://www.instructure.com/sites/default/files/file/2023-04/Canvas_Security%20Audit_Report_2023.pdf). The Security Audits help Canvas LMS find critical/high/medium/low/information vulnerabilities, and how it impacts them. Helping investors and customers feel more secure, which each progress.
+
+*E-2  – Admin Guide: Roles and Permissions*: Canvas LMS has detail documentation on how to implement Roles and Permissions in their Admin Guide, under Roles and Permissions. The document can be found here [What user roles and permissions are avialable in Canvas?](https://community.canvaslms.com/t5/Admin-Guide/What-user-roles-and-permissions-are-available-in-Canvas/ta-p/102 ). Even do it do not cover every possible scenario, it covers a large majority of it. They also include the Canvas Account Permissions resource document here [Canvas Account Role Permissions](https://community.canvaslms.com/t5/Canvas-Resource-Documents/Canvas-Account-Role-Permissions/ta-p/387078).
+
+*E-3 – Security Testing*: On their main page, under Security, Canvas LMS promises users that they implement both preventative and detective mechanism thought the Software Development Life Cycle. They also implement a full QA test before they can push any update.
+
+*E-4 – Bug Bounty Program*: Canvas LMS has a private bug bounty program, this is great because it can keep a lot of their vulnerabilities away from the public. Preventing bad actors from acting on does vulnerabilities before they are fixed. There is a process to be part of the program, which involves you submitting your Bugcrowd username and resume to security@instructore.com, a bad actor can use social engineering to get into the program. It is not clear if there are additional steps to prevent this. 
 
 ----
 
