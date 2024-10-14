@@ -30,7 +30,7 @@
 ----
 
 ### **Claim 4 - Jesse**
-![Assurance Case 4](./Diagrams/your-diagram.png)
+![Assurance Case 4](./Diagrams/Claim4.png)
 
 **Part 2 Assessment** - 
 
