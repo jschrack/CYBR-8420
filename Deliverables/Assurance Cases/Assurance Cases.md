@@ -8,8 +8,9 @@
 
 ## Claims
 
-### **Claim 1 - Augusto**
+### **Claim 1 - Canvas-LMS role-based access control (RBAC) reduces the risk of permission misconfiguration.**
 ![Assurance Case 1](./Diagrams/Assurance-Case-1.png)
+
 
 **Part 2 Assessment** - 
 *E1 – Application Security Process*: Canvas LMS takes many steps to prevent pushing a known vulnerability into their patches, one of the steps is doing Security Audits, which they release to the public, latest one here [Canvas Security Audit 2023](https://www.instructure.com/sites/default/files/file/2023-04/Canvas_Security%20Audit_Report_2023.pdf). The Security Audits help Canvas LMS find critical/high/medium/low/information vulnerabilities, and how it impacts them. Helping investors and customers feel more secure, which each progress.
@@ -42,18 +43,28 @@
 
 ----
 
-### **Claim 4 - Jesse**
-![Assurance Case 4](./Diagrams/your-diagram.png)
+### **Claim 4 - Minimize Man-In-The-Middle Attacks**
+![Assurance Case 4](./Diagrams/Claim4.png)
 
-**Part 2 Assessment** - 
+**Part 2 Assessment**
+
+*E1 - Security Reports*: [Canvas LMS Trust Center](https://www.instructure.com/trust-center/security) explicitly states that all traffic is encrypted using TLS 1.2 or higher. As there was no other public report providing this information, an analysis into the source code was done as well. The [cassandra.yaml](https://github.com/instructure/canvas-lms/blob/master/build/docker-compose/cassandra/cassandra.yaml) file is a configuration file for an Apache Cassandra instance. Within that file the comments mention that for inter-node encryption the default settings are TLS v1 and RSA 1024 bit keys. There is a potential gap in security here as the inner node TLS may be defaulting to TLS v1 in certain instances.   
+
+*E2 - Certificate Logs*: Using a certificate log checker the certificates appear to be issued by Amazon on a semi-annual basis (checked using crt.sh). AWS certificate manager automatically renews without any manual intervention. This ensures certificates are renewed way before the expiration date and are done correctly. It is unlikely that there are gaps within the automated certificate renewal that is completed by AWS.
+
+*E3 - Source Code Analysis*: Upon reviewing the Canvas LMS software source code, it can be directly seen that HSTS is enabled and SSL is required. In the source code it is also mentioned that non-HTTPS is redirected at the apache layer. Though there is a redirect at the server level, on subdomains HSTS is directly set to false. A comment in the code mentions that HSTS has historically not been set on subdomains and that enabling it may cause issues. This may lead to a potential security gap in the implementation of these protocols (found in the [production.rb](https://github.com/instructure/canvas-lms/blob/master/config/environments/production.rb) file). Upon running a check through hardenize.com, the results stated that there was an issue with HSTS configuration (it didn't go into detail), which may be related to the above issue.
 
 ----
 
-### **Claim 5 - Mark**
-![Assurance Case 5](./Diagrams/your-diagram.png)
+### **Claim 5 - Minimize Injection Related Weaknesses**
+![Assurance Case 5](./Diagrams/AssuranceCaseDiagram.png)
 
 **Part 2 Assessment** - 
+*E1 - Canvas Admin Guide*: Canvas provides a comprehensive guide on how to configure many different pieces. Due to the size of canvas documentation does get hard to navigate, but it does provide a guide for many settings that protect against injection related weaknesses.This is listed on their community site: [Canvas Admin Guide](https://community.canvaslms.com/t5/Admin-Guide/tkb-p/admin). The biggest potential gap is the human error of implementing all steps and understanding of what is needed. 
 
+*E2 - Penetration Test Report*: The Canvas LMS Security Audit Report 2023: [Penetration Test Report](https://www.instructure.com/sites/default/files/file/2023-04/Canvas_Security%20Audit_Report_2023.pdf) provides a detailed review of the security measures in place for Canvas LMS. It outlines the methodology used, including bug bounty programs, and discusses the types of vulnerabilities identified. The report summarizes the findings for 2022 and highlights improvements made to strengthen Canvas' security posture. The gaps may be possibly missing a vulnerability in testing that was not remediated, or if there are physical security issues that may create weaknesses.
+
+*E3 - Instructure Partner List*: You can find documentation for all integrations including an individual guide per each integration: [Instructure Partner List](https://community.canvaslms.com/t5/Partners/ct-p/partners). The major gap in this list would be that it does not notify a user of an integration becoming legacy. The integration is simply removed from the list for future use, but extra steps would need to be taken to notify all current users. 
 
 ## Alignment of Evidence Assessment
 We can add a short summary of the individual assessments here or just remove
