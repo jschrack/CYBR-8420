@@ -41,25 +41,25 @@
 ![Assurance Case 3](./Diagrams/Assurance-Case-3.png)
 
 
-*E11 - Canvas implements configurable timeouts for sessions.
+*E11 - Session Timeouts*: Canvas implements configurable timeouts for sessions.
 
-*E211 - Canvas provides content security policy configuration that can restrict frame usage, but it is not well documented.
+*E211 - Frame Policy*: Canvas provides content security policy configuration that can restrict frame usage, but it is not well documented.
 
-*E212 - Canvas depends on the web server configuration to implement CORS.
+*E212 - CORS*: Canvas depends on the web server configuration to implement CORS.
 
-*E22 - No API audit matrix exists. This would consist of an enumeration of all API calls as well as what permissions checking they implement.
+*E22 - API Audit Matrix*: No API audit matrix exists. This would consist of an enumeration of all API calls as well as what permissions checking they implement.
 
-*E31 - Canvas does *not* use a synchronization mechanism. Instead, it relies on cryptography and random number generation in the function, generate_securish_uuid()
+*E31 - Atomic ID Generation*: Canvas does *not* use a synchronization mechanism. Instead, it relies on cryptography and random number generation in the function, generate_securish_uuid()
 
-*E61 - Canvas times out after reasonable periods of time.
+*E61 - Authentication Timeouts*: Canvas times out login sessions after configurable periods of time. See E11.
 
-*E62 - Canvas does *not* have reasonable defaults and warnings for permissions. Old course materials are typically publicly available.
+*E62 - Defaults and Warnings*: Canvas does *not* have reasonable defaults and warnings for permissions. Old course materials are typically publicly available. They can reveal answer keys and other information that most instructors would prefer to keep off of the public Internet.
 
-*E7 - Penetration tests are conducted annually, and the results are published.
+*E7 - Penetration Tests*: Penetration tests are conducted annually, and the results are published.
 
-*E812 - Canvas has implemented support for SHA256 hashing, but most configurations use MD5.
+*E812 - Secure Hash Algorithms*: Canvas has implemented support for SHA256 hashing, but most configurations use MD5.
 
-*E821 - Typical configurations, such as Canvas SAS instances, use AES-256 encryption for the database.
+*E821 - Database Encryption*: Typical configurations, such as Canvas SAS instances, use AES-256 encryption for the database.
 
 
 **Part 2 Assessment**  
