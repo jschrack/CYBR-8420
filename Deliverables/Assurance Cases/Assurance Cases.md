@@ -37,9 +37,10 @@
 
 ----
 
-### **Claim 3 - Canvas LMS Maintains Sufficient User Data Confidentiality **
+### **Claim 3 - Canvas LMS Maintains Sufficient User Data Confidentiality**
 ![Assurance Case 3](./Diagrams/Assurance-Case-3.png)
 
+**Part 2 Assessment**  
 
 *E11 - Session Timeouts*: While Canvas offers the flexibility to adjust session durations, the default settings may be insufficient to safeguard against unauthorized access. 
 
@@ -61,12 +62,9 @@
 
 *E821 - Database Encryption*: Typical configurations, such as Canvas SAS instances, use AES-256 encryption for the database.
 
-
-**Part 2 Assessment**  
-
 ----
 
-### **Claim 4 - Minimize Man-In-The-Middle Attacks**
+### **Claim 4 - Canvas LMS Minimizes Man-In-The-Middle Attacks**
 ![Assurance Case 4](./Diagrams/Claim4.png)
 
 **Part 2 Assessment**
@@ -79,7 +77,7 @@
 
 ----
 
-### **Claim 5 - Minimize Injection Related Weaknesses**
+### **Claim 5 - Canvas LMS Minimizes Injection Related Weaknesses**
 ![Assurance Case 5](./Diagrams/AssuranceCaseDiagram.png)
 
 **Part 2 Assessment**  
