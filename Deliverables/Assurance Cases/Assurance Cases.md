@@ -8,7 +8,7 @@
 
 ## Claims
 
-### **Claim 1 - Augusto**
+### **Claim 1 - Canvas-LMS role-based access control (RBAC) reduces the risk of permission misconfiguration.**
 ![Assurance Case 1](./Diagrams/your-diagram.png)
 
 **Part 2 Assessment** - 
