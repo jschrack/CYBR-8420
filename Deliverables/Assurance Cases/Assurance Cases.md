@@ -37,8 +37,30 @@
 
 ----
 
-### **Claim 3 - Geoff**
+### **Claim 3 - Canvas LMS Maintains Sufficient User Data Confidentiality **
 ![Assurance Case 3](./Diagrams/Assurance-Case-3.png)
+
+
+*E11 - Canvas implements configurable timeouts for sessions.
+
+*E211 - Canvas provides content security policy configuration that can restrict frame usage, but it is not well documented.
+
+*E212 - Canvas depends on the web server configuration to implement CORS.
+
+*E22 - No API audit matrix exists. This would consist of an enumeration of all API calls as well as what permissions checking they implement.
+
+*E31 - Canvas does *not* use a synchronization mechanism. Instead, it relies on cryptography and random number generation in the function, generate_securish_uuid()
+
+*E61 - Canvas times out after reasonable periods of time.
+
+*E62 - Canvas does *not* have reasonable defaults and warnings for permissions. Old course materials are typically publicly available.
+
+*E7 - Penetration tests are conducted annually, and the results are published.
+
+*E812 - Canvas has implemented support for SHA256 hashing, but most configurations use MD5.
+
+*E821 - Typical configurations, such as Canvas SAS instances, use AES-256 encryption for the database.
+
 
 **Part 2 Assessment**  
 
