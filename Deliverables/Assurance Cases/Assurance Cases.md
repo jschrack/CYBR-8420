@@ -37,7 +37,7 @@
 ----
 
 ### **Claim 3 - Geoff**
-![Assurance Case 3](./Diagrams/your-diagram.png)
+![Assurance Case 3](./Diagrams/Assurance-Case-3.png)
 
 **Part 2 Assessment** - 
 
