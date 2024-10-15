@@ -41,25 +41,25 @@
 ![Assurance Case 3](./Diagrams/Assurance-Case-3.png)
 
 
-*E11 - Canvas implements configurable timeouts for sessions.
+*E11 - Session Timeouts*: While Canvas offers the flexibility to adjust session durations, the default settings may be insufficient to safeguard against unauthorized access. 
 
-*E211 - Canvas provides content security policy configuration that can restrict frame usage, but it is not well documented.
+*E211 - Frame Policy*: Although Canvas provides options for content security policy, the documentation is sparse, potentially leaving the platform exposed to the insidious threat of clickjacking. Expertise is required to mitigagte this risk.
 
-*E212 - Canvas depends on the web server configuration to implement CORS.
+*E212 - CORS*: Canvas's reliance on external web server configuration for CORS introduces an element of uncertainty, as improper management can lead to security vulnerabilities. Expertise is required to mitigate this risk.
 
-*E22 - No API audit matrix exists. This would consist of an enumeration of all API calls as well as what permissions checking they implement.
+*E22 - API Audit Matrix*: No API audit matrix exists. This would consist of an enumeration of all API calls as well as what permissions checking they implement.
 
-*E31 - Canvas does *not* use a synchronization mechanism. Instead, it relies on cryptography and random number generation in the function, generate_securish_uuid()
+*E31 - Atomic ID Generation*: Canvas does *not* use a synchronization mechanism for ID generation. Instead, it relies on cryptography and random number generation in the function, generate_securish_uuid() The lack of synchronization mechanisms may create vulnerabilities in high-concurrency environments. A more robust ID generation strategy is adviseable to prevent collisions and ensure data integrity.
 
-*E61 - Canvas times out after reasonable periods of time.
+*E61 - Authentication Timeouts*: Canvas times out login sessions after configurable periods of time. See E11.
 
-*E62 - Canvas does *not* have reasonable defaults and warnings for permissions. Old course materials are typically publicly available.
+*E62 - Defaults and Warnings*: Canvas's permissive default permissions and lack of clear warnings can lead to inadvertent public disclosure of sensitive course materials, exposing instructors and students to potential risks. A more stringent approach to permissions and improved warnings is crucial to safeguard sensitive information. Course materials are typically publicly available if the URL can be guessed. They can reveal answer keys and other information that most instructors would prefer to keep off of the public Internet.
 
-*E7 - Penetration tests are conducted annually, and the results are published.
+*E7 - Penetration Tests*: Penetration tests are conducted annually, and the results are published.
 
-*E812 - Canvas has implemented support for SHA256 hashing, but most configurations use MD5.
+*E812 - Secure Hash Algorithms*: Although Canvas offers SHA256 hashing, the prevalence of MD5 in most configurations presents a potentially significant security risk. A transition to SHA256 across all configurations is essential to protect against cryptographic attacks.
 
-*E821 - Typical configurations, such as Canvas SAS instances, use AES-256 encryption for the database.
+*E821 - Database Encryption*: Typical configurations, such as Canvas SAS instances, use AES-256 encryption for the database.
 
 
 **Part 2 Assessment**  
