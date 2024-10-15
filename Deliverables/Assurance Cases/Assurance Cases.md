@@ -48,7 +48,7 @@
 
 ----
 
-### **Claim 5 - Mark**
+### **Claim 5 - Minimize Injection Related Weaknesses**
 ![Assurance Case 5](./Diagrams/AssuranceCaseDiagram.png)
 
 **Part 2 Assessment** - 
