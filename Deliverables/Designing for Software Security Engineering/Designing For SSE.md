@@ -50,4 +50,3 @@
 
 
 ## Team Reflection
-The team worked extremely well and hard for this assignment, there was clear communication with the team chat. Everyone posted all their questions in the chat, and every single individual responded with proper timing and excellent information/advice. The team came together and talked about how we tend to leave submission till the last minute, this is something we brought up last week. We need to do a better job of submitting our work before the last minute. We will work on this by pinging everyone on the discord to submit what they have even if it’s unfinished, so we can keep a steady pace and help each other improve.
