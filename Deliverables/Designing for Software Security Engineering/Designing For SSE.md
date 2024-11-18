@@ -12,7 +12,7 @@
 
 ## Part 2 Observations
 
-After reviewing the threat modeling report, we concluded as a team that the following numbers need more investigation: #9, #15, #17
+After reviewing the threat modeling report, we concluded as a team that the following numbers need more investigation: #2, #9, #15
 
 Canvas LMS is designed with security in mind, but like any software platform, it may still be susceptible to vulnerabilities. One potential design-related gap highlighted by the DFD analysis is the absence of a database firewall; however, it is possible that such a feature is in place but not publicly disclosed. While Canvas LMS seems to implement a robust network security strategy, past evaluations have uncovered vulnerabilities in its security measures. For instance, although the platform provides protections against CSRF and XSS attacks, this does not guarantee that its mitigation capabilities are entirely free of flaws or limitations.
 
