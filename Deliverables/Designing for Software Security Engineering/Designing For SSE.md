@@ -8,7 +8,7 @@
 
 ## Data Flow Diagram
 
-[Threat Modeling Report](https://jschrack.github.io/CYBR-8420/threat_modeling_report.html)
+[Threat Modeling Report](https://jschrack.github.io/CYBR-8420/Deliverables/Designing%20for%20Software%20Security%20Engineering/threat_modeling_report.html)
 
 ## Part 2 Observations
 
