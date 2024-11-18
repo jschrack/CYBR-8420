@@ -15,12 +15,13 @@
 
 After reviewing the threat modeling report, we concluded as a team that the following numbers need more investigation: #2, #9, #15
 
-Canvas LMS is designed with security in mind, but like any software platform, it may still be susceptible to vulnerabilities. One potential design-related gap highlighted by the DFD analysis is the absence of certifcate-based validation for the Data Store database; however, it is possible that such a feature is in place but not disclosed in default configuration documentation. While Canvas LMS seems to implement a robust network security strategy, past evaluations have uncovered vulnerabilities in its security measures. For instance, although the platform provides protections against CSRF and XSS attacks, this does not guarantee that its mitigation capabilities are entirely free of flaws or limitations.
+Canvas LMS is designed with security in mind, but like any software platform, it may still be susceptible to vulnerabilities. One potential design-related gap highlighted by the DFD analysis is the absence of certifcate-based validation for the Data Store database; however, it is possible that such a feature is in place but not disclosed in default configuration documentation. 
 
 Another potential designed gap could be elevation by changing the execution flow in web server. Canvas LMS has basic input validation but needs additional protection from program flow integrity. This could be done by implementing input validation on every input (updated with new vulnerability finds) and code integrity checks to prevent attackers from altering the web server’s execution flow.
 
 Lastly, Canvas LMS potentially lacks input validation within the codebase. Due to there being so many different places where validation would need to be verified, this issue still needs to be investigated. The best approach for checking input validation would likely be the use of an automated tool. This would help ensure that each potential location is checked. In the spots that were checked, proper input validation and sanitization were in place.
 
+While Canvas LMS seems to implement a robust network security strategy, past evaluations have uncovered vulnerabilities in its security measures. For instance, although the platform provides protections against CSRF and XSS attacks, this does not guarantee that its mitigation capabilities are entirely free of flaws or limitations.
 
 ## Team Reflection
 
