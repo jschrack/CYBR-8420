@@ -5,10 +5,11 @@
 
 ---
 
-
 ## Data Flow Diagram
 
 [Threat Modeling Report](https://jschrack.github.io/CYBR-8420/Deliverables/Designing%20for%20Software%20Security%20Engineering/threat_modeling_report.html)
+
+![Assurance Case 1](./Diagrams/DFD.png)
 
 ## Part 2 Observations
 
@@ -17,6 +18,8 @@ After reviewing the threat modeling report, we concluded as a team that the foll
 Canvas LMS is designed with security in mind, but like any software platform, it may still be susceptible to vulnerabilities. One potential design-related gap highlighted by the DFD analysis is the absence of a database firewall; however, it is possible that such a feature is in place but not publicly disclosed. While Canvas LMS seems to implement a robust network security strategy, past evaluations have uncovered vulnerabilities in its security measures. For instance, although the platform provides protections against CSRF and XSS attacks, this does not guarantee that its mitigation capabilities are entirely free of flaws or limitations.
 
 Another potential designed gap could be elevation by changing the execution flow in web server. Canvas LMS has basic input validation but needs additional protection from program flow integrity. This could be done by implementing input validation on every input (updated with new vulnerability finds) and code integrity checks to prevent attackers from altering the web server’s execution flow.
+
+Lastly, Canvas LMS potentially lacks input validation within the codebase. Due to there being so many different places where validation would need to be verified, this issue still needs to be investigated. The best approach for checking input validation would likely be the use of an automated tool. This would help ensure that each potential location is checked. In the spots that were checked, proper input validation and sanitization were in place.
 
 
 ## Team Reflection
