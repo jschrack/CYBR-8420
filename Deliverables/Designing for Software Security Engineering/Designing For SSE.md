@@ -13,7 +13,7 @@
 
 ## Part 2 Observations
 
-After reviewing the threat modeling report, we concluded as a team that the following numbers need more investigation: Elevation by Changing the Execution Flow in Web Server, Potential Lack of Input Validation for Web Server, Spoofing of Source Data Store Database, and Spoofing of Destination Data Store Database
+After reviewing the threat modeling report, we concluded as a team that the following threats need more investigation: Elevation by Changing the Execution Flow in Web Server, Potential Lack of Input Validation for Web Server, Spoofing of Source Data Store Database, and Spoofing of Destination Data Store Database
 
 Canvas LMS is designed with security in mind, but like any software platform, it may still be susceptible to vulnerabilities. One potential design-related gap highlighted by the DFD analysis is the absence of certifcate-based validation for the database. This feature is supported by Canvas, but no recommendation for it is made in the supporting documents.
 
