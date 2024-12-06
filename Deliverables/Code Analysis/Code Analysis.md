@@ -1,4 +1,4 @@
-# CYBR-8420 Assurance Cases
+# CYBR-8420 Code Analysis for Software Security Engineering
 
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/6/views/1)
