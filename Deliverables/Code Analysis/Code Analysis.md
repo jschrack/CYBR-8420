@@ -75,7 +75,6 @@ Document findings from automated code scanning (if available). Include links to 
   **CWE-532:** CodeQL detected 74 vulnerabilities with all of them having a severity level of high. 14 of the reported issues were related to test cases and can therefore likely be disregarded. An example of one of the detected vulnerabilities in the users controller can be seen below:
   ![SNYK-CSRF result](./Diagrams/CodeQL-CWE532-Example.PNG)
   
-
 ## Manual Code Review Findings
 Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
 
@@ -121,12 +120,15 @@ Document findings from a manual code review of critical security functions ident
     - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
  8. **app/controllers/files_controller.rb**
     - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+
 ## Summary of Findings
 Provide a summary of findings from manual and/or automated scanning. This summary should include mappings to CWEs to describe significant findings and perceive risk in your hypothetical operational environment.
 
   **CWE-79:** CodeQL returned several more instances of potential XSS file vulnerabilities than SNYK. The results from SNYK are mostly consistent with the manual code analysis, with the manual analysis returning a bit more detail.
 
   **CWE-352:** There were not many instances found with SNYK for CSRF, but CodeQL did return several potential files with vulnerabilities. Using manual code review with ChatGPT, a significant amount of detail was revealed.
+
+  **CWE-532:** CodeQL identified 74 potential issues with 60 of them relating to non-test modules/files. The issue reported is clear-text storage of sensitive information. After performing manual review of the findings reported by the automated tool, it seems this issue needs to be explored further. Many of the reportings are related to the values stored with the @current_user context object. After analyzing that object, it seems that sensitive information like access keys or passwords are stored in a secure format while non-sensitive information is stored in clear-text. This eliminates many of the detected issues but requires the rest of them to be investigated independently.
 
 ## Planned Contributions
 Describe your planned or ongoing contributions to the upstream open-source project (I.documentation, design changes, code changes, communications, etc.). Your response can be based on any of the prior assignments in the class.
