@@ -15,7 +15,7 @@ Identify a list of 5-10 CWEs (as specific as possible) that would be most import
 
 1. 
 2. 
-**3. CWE-79: Improper Neutralization of Input During Web Page Generation / Cross-site Scripting**
+ **3. CWE-79: Improper Neutralization of Input During Web Page Generation / Cross-site Scripting**
    
   **Description:** The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.
   •	Type 1: Reflected XSS (or Non-Persistent) - The server reads data directly from the HTTP request and reflects it back in the HTTP response. Reflected XSS exploits occur when an attacker causes a victim to supply dangerous content to a vulnerable web application, which is then reflected back to the victim and executed by the web browser. The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to the victim. URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces a victim to visit a URL that refers to a vulnerable site. After the site reflects the attacker's content back to the victim, the content is executed by the victim's browser.
@@ -24,7 +24,7 @@ Identify a list of 5-10 CWEs (as specific as possible) that would be most import
 
 Once the malicious script is injected, the attacker can perform a variety of malicious activities. The attacker could transfer private information, such as cookies that may include session information, from the victim's machine to the attacker. The attacker could send malicious requests to a web site on behalf of the victim, which could be especially dangerous to the site if the victim has administrator privileges to manage that site. Phishing attacks could be used to emulate trusted web sites and trick the victim into entering a password, allowing the attacker to compromise the victim's account on that web site. Finally, the script could exploit a vulnerability in the web browser itself possibly taking over the victim's machine, sometimes referred to as "drive-by hacking."
 
-**4. CWE-352: Cross-Site Request Forgery (CSRF)**
+ **4. CWE-352: Cross-Site Request Forgery (CSRF)**
 
   **Description:** The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request. When a web server is designed to receive a request from a client without any mechanism for verifying that it was intentionally sent, then it might be possible for an attacker to trick a client into making an unintentional request to the web server which will be treated as an authentic request. This can be done via a URL, image load, XMLHttpRequest, etc. and can result in exposure of data or unintended code execution.
 
@@ -37,6 +37,8 @@ Once the malicious script is injected, the attacker can perform a variety of mal
 ### Automated Code-Scanning Tools
 Select automated code-scanning tools based on the software composition of your project. One tool may not be enough. If no free and open-source tools are available, see if you can get a free trial version for a few days
 
+ **SNYK** - Uses real time semantic code analysis based on machine learning to determine code issues such as dead code, type inference, data flow issues, API misuse, and type mismatches for Java, JavaScript, TypeScript, and Python.
+
 
 ### Anticipated Challenges
 What challenges did you expect before starting the code review?
@@ -47,10 +49,10 @@ Document findings from automated code scanning (if available). Include links to 
 
   **CWE-79:** Using SNYK, I executed a scan to look for XSS weaknesses. Complete results are available at: [Canvas-LMS SNYK scan results](https://app.snyk.io/org/peachykeen00/project/129f2d2c-52f6-4b13-8d76-1f819ec1d2d7)
   There were a total of 15 XSS vulnerabilities (6 high, 8 medium, and 1 low severity). An example of one of the XSS vulnerabilities is below, from the packages/jquery-pageless/index.js file:
-
+![SNYK-XSS result](./Diagrams/SNYK-XSS.png)
 
   **CWE-352:** Using SNYK, I scanned the files in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
-  
+![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
   
 
 ## Manual Code Review Findings
@@ -85,7 +87,9 @@ Document findings from a manual code review of critical security functions ident
 ## Summary of Findings
 Provide a summary of findings from manual and/or automated scanning. This summary should include mappings to CWEs to describe significant findings and perceive risk in your hypothetical operational environment.
 
-  **CWE-79:** The results are mostly consistent between the automated and manual code analysis, with the manual analysis returning a bit more detail.
+  **CWE-79:** CodeQL returned several more instances of potential XSS file vulnerabilities than SNYK. The results from SNYK are mostly consistent with the manual code analysis, with the manual analysis returning a bit more detail.
+
+  **CWE-352:** There were not many instances found with SNYK for CSRF, but CodeQL did return several potential files with vulnerabilities. Using manual code review with ChatGPT, a significant amount of detail was revealed.
 
 ## Planned Contributions
 Describe your planned or ongoing contributions to the upstream open-source project (I.documentation, design changes, code changes, communications, etc.). Your response can be based on any of the prior assignments in the class.
