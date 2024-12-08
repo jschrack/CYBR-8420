@@ -56,7 +56,7 @@ Document findings from automated code scanning (if available). Include links to 
   **CWE-352:** Using SNYK, I scanned the files in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
 
-  **CWE-89:** I scanned the codebase using the command
+  **CWE-89:** We scanned the codebase using the command
   
     find ./app -name \*.rb -type f -print0 | xargs -0 grep -iE "\W(SELECT|INSERT|UPDATE|DELETE)\W"
     
