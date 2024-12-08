@@ -47,7 +47,7 @@ Once the malicious script is injected, the attacker can perform a variety of mal
 5. 
 6. 
 7. **CWE-532**: Insertion of Sensitive Information into Log File
-8.
+8. **CWE-285**: Improper Authorization
 9.
 
 ### Automated Code-Scanning Tools
@@ -103,8 +103,24 @@ Document findings from a manual code review of critical security functions ident
         -The oidc_params method ensures that only expected parameters are permitted: *params.permit(*(OPTIONAL_PARAMS + REQUIRED_PARAMS))*, however, the contents of redirect_uri are not validated against a strict whitelist, which might enable attackers to manipulate redirects.
 4.	Contextual Validations
         -The code performs several validations (e.g., validate_oidc_params!, validate_client_id!, validate_current_user!) to ensure the request is legitimate. These are robust checks against certain kinds of abuse but do not directly address CSRF.
- 
 
+ **CWE-285:**
+ 1. **app/controllers/gradebooks_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 2. **app/controllers/user_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 3. **app/controllers/admins_controller.rb**
+    - Using ChatGPT it mentioned potential issues with the destroy and create endpoints as the role_id is not being validated on input. However, after manual code review, it has been determined to not be an issue since it is checking for a user with matching user ID and role ID. Therefore if an invalid role ID is passed then the user account will not be found and the action will not be completed.
+ 4. **app/controllers/profile_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 5. **app/controllers/tokens_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 6. **app/controllers/quizzes/quizzes_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 7. **app/controllers/quizzes/quizzes_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 8. **app/controllers/files_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
 ## Summary of Findings
 Provide a summary of findings from manual and/or automated scanning. This summary should include mappings to CWEs to describe significant findings and perceive risk in your hypothetical operational environment.
 
