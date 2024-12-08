@@ -5,10 +5,26 @@
 
 
 
-## Code Review Stratgey
+## Code Review Strategy
 
 ### Relevant Code Modules
-Scope your code review effort to specific code modules/files relevant to misuse cases, assurance claims, and threat models. This is a scenario or weakness-based approach.
+Based on our misuse cases, assurance claims, and threat models, the following modules/files have been determined to be within scope:
+- Authentication and Authorization
+    - Access controls properly implemented
+    - Securely managed session tokens
+    - Hardcoded credentials
+    - 2FA implementation
+- Database and Data Integrity
+    - Database config
+    - Input validation and sanitization
+    - Data Access Layer
+- File Handling
+    - Path Traversal
+    - Access control
+    - Secure file handling
+- API endpoints relating to grades, users, quizzes
+    - Proper authentication and authorization
+- Application logging
 
 ### CWEs
 Identify a list of 5-10 CWEs (as specific as possible) that would be most important for findings from your manual or automated code review. The selection of CWEs will depend on the type of programming language, platform, and architecture of your project. Knowing what you are looking for in a large codebase will help you focus your efforts. This is a checklist-based approach. 
@@ -30,14 +46,16 @@ Once the malicious script is injected, the attacker can perform a variety of mal
 
 5. 
 6. 
-7.
-8.
+7. **CWE-532**: Insertion of Sensitive Information into Log File
+8. **CWE-285**: Improper Authorization
 9.
 
 ### Automated Code-Scanning Tools
 Select automated code-scanning tools based on the software composition of your project. One tool may not be enough. If no free and open-source tools are available, see if you can get a free trial version for a few days
 
  **SNYK** - Uses real time semantic code analysis based on machine learning to determine code issues such as dead code, type inference, data flow issues, API misuse, and type mismatches for Java, JavaScript, TypeScript, and Python.
+
+ **CodeQL** - GitHub's built in code analysis tool for finding vulnerabilites and bugs in codebases. It supports JavaScript/Typescript, Python, and Ruby, which are the languages used by Canvas LMS. The tool can be easily integrated to most codebases and can be setup to run throughout the CI/CD pipeline.
 
 
 ### Anticipated Challenges
@@ -53,8 +71,10 @@ Document findings from automated code scanning (if available). Include links to 
 
   **CWE-352:** Using SNYK, I scanned the files in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
-  
 
+  **CWE-532:** CodeQL detected 74 vulnerabilities with all of them having a severity level of high. 14 of the reported issues were related to test cases and can therefore likely be disregarded. An example of one of the detected vulnerabilities in the users controller can be seen below:
+  ![SNYK-CSRF result](./Diagrams/CodeQL-CWE532-Example.PNG)
+  
 ## Manual Code Review Findings
 Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
 
@@ -73,7 +93,7 @@ Document findings from a manual code review of critical security functions ident
       -The settings.scrape function is applied to the AJAX response: var data = $.isFunction(settings.scrape) ? settings.scrape(data, xhr) : data;
       -Risk: If the custom scrape function introduces untrusted data or modifies the response insecurely, this could result in XSS when appended to the DOM.
 
-   **CWE-352:** Not being proficent in Ruby, I used ChatGPT to analyze files that had returned CSRF vulnerablities in the CodeQL scan that Jesse ran. The results from the app/controllers/lti/ims/authentication_controller.rb file are as follows:
+   **CWE-352:** Not being proficient in Ruby, I used ChatGPT to analyze files that had returned CSRF vulnerabilities in the CodeQL scan that Jesse ran. The results from the app/controllers/lti/ims/authentication_controller.rb file are as follows:
    1.	Skipped CSRF Protection
         -In the authorize_redirect method: *skip_before_action :verify_authenticity_token, only: :authorize_redirect*, CSRF protection is explicitly skipped, which is a common indicator of potential CWE-352 risks. This allows the endpoint to be accessed without verifying the legitimacy of the request's origin.
 2.	Open Redirect Possibility
@@ -82,7 +102,24 @@ Document findings from a manual code review of critical security functions ident
         -The oidc_params method ensures that only expected parameters are permitted: *params.permit(*(OPTIONAL_PARAMS + REQUIRED_PARAMS))*, however, the contents of redirect_uri are not validated against a strict whitelist, which might enable attackers to manipulate redirects.
 4.	Contextual Validations
         -The code performs several validations (e.g., validate_oidc_params!, validate_client_id!, validate_current_user!) to ensure the request is legitimate. These are robust checks against certain kinds of abuse but do not directly address CSRF.
- 
+
+ **CWE-285:**
+ 1. **app/controllers/gradebooks_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 2. **app/controllers/user_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 3. **app/controllers/admins_controller.rb**
+    - Using ChatGPT it mentioned potential issues with the destroy and create endpoints as the role_id is not being validated on input. However, after manual code review, it has been determined to not be an issue since it is checking for a user with matching user ID and role ID. Therefore if an invalid role ID is passed then the user account will not be found and the action will not be completed.
+ 4. **app/controllers/profile_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 5. **app/controllers/tokens_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 6. **app/controllers/quizzes/quizzes_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 7. **app/controllers/quizzes/quizzes_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+ 8. **app/controllers/files_controller.rb**
+    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
 
 ## Summary of Findings
 Provide a summary of findings from manual and/or automated scanning. This summary should include mappings to CWEs to describe significant findings and perceive risk in your hypothetical operational environment.
@@ -90,6 +127,8 @@ Provide a summary of findings from manual and/or automated scanning. This summar
   **CWE-79:** CodeQL returned several more instances of potential XSS file vulnerabilities than SNYK. The results from SNYK are mostly consistent with the manual code analysis, with the manual analysis returning a bit more detail.
 
   **CWE-352:** There were not many instances found with SNYK for CSRF, but CodeQL did return several potential files with vulnerabilities. Using manual code review with ChatGPT, a significant amount of detail was revealed.
+
+  **CWE-532:** CodeQL identified 74 potential issues with 60 of them relating to non-test modules/files. The issue reported is clear-text storage of sensitive information. After performing manual review of the findings reported by the automated tool, it seems this issue needs to be explored further. Many of the reportings are related to the values stored with the @current_user context object. After analyzing that object, it seems that sensitive information like access keys or passwords are stored in a secure format while non-sensitive information is stored in clear-text. This eliminates many of the detected issues but requires the rest of them to be investigated independently.
 
 ## Planned Contributions
 Describe your planned or ongoing contributions to the upstream open-source project (I.documentation, design changes, code changes, communications, etc.). Your response can be based on any of the prior assignments in the class.
