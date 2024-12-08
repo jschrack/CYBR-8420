@@ -28,8 +28,10 @@ Once the malicious script is injected, the attacker can perform a variety of mal
 
   **Description:** The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request. When a web server is designed to receive a request from a client without any mechanism for verifying that it was intentionally sent, then it might be possible for an attacker to trick a client into making an unintentional request to the web server which will be treated as an authentic request. This can be done via a URL, image load, XMLHttpRequest, etc. and can result in exposure of data or unintended code execution.
 
-5. 
-6. 
+ **5. CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')**
+
+ ** 6. 
+
 7.
 8.
 9.
@@ -53,10 +55,17 @@ Document findings from automated code scanning (if available). Include links to 
 
   **CWE-352:** Using SNYK, I scanned the files in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
+
+  **CWE-89:** I scanned the codebase using the command
   
+    find ./app -name \*.rb -type f -print0 | xargs -0 grep -iE "\W(SELECT|INSERT|UPDATE|DELETE)\W"
+    
+  to find SQL queries. This led to a large number of false positives but also revealed many instances where SQL queries were built using string processing rather than with an ORM library or SQL parameterization. This is problematic due to the level of care required to prevent SQL injection when building raw queries (and as a side note, queries that do not use ORM make it much harder to use a NoSQL database with Canvas). Several of these queries are very complex, with dozens of variables that contain user input, and some of the queries appear in functions that are directly responsible for dispatching web API calls.
+
 
 ## Manual Code Review Findings
 Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
+
 
   **CWE-79:** Not being proficient in Javascript, I used ChatGPT to further investigate code from the packages/jquery-pageless/index.js file that was included in the automated XSS tool results. The analysis returned the following results from that file:
   
