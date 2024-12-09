@@ -39,7 +39,7 @@ Identify a list of 5-10 CWEs (as specific as possible) that would be most import
 
  **5. CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')**
 
- **6.  Palceholder**
+ **6.  CWE-502: Deserialization of Untrusted Data**
 
  **7. CWE-532: Insertion of Sensitive Information into Log File**
 
@@ -56,6 +56,7 @@ Select automated code-scanning tools based on the software composition of your p
 
  **CodeQL** - GitHub's built in code analysis tool for finding vulnerabilites and bugs in codebases. It supports JavaScript/Typescript, Python, and Ruby, which are the languages used by Canvas LMS. The tool can be easily integrated to most codebases and can be setup to run throughout the CI/CD pipeline.
 
+**grep** - The Unix command-line tool `grep` was used in conjunction with the ```find`` utility to look for text strings indicative of potential security vulnerabilities. The grep utility is not designed specifically for scanning code, but it is very useful for locating potential issues for manual analysis.
 
 ### Anticipated Challenges
 What challenges did you expect before starting the code review?
@@ -77,6 +78,7 @@ Document findings from automated code scanning (if available). Include links to 
     
   to find SQL queries. This led to a large number of false positives but also revealed many instances where SQL queries were built using string processing rather than with an ORM library or SQL parameterization. This is problematic due to the level of care required to prevent SQL injection when building raw queries (and as a side note, queries that do not use ORM make it much harder to use a NoSQL database with Canvas). Several of these queries are very complex, with dozens of variables that contain user input, and some of the queries appear in functions that are directly responsible for dispatching web API calls.
 
+ **CWE-502:** We performed text searches for the Marshall serialization library and found none in the codebase. Next, we looked for OpenStruct. Canvas does use OpenStruct but only for serialization, not deserialization. Next, we looked for YAML deserialization. Canvas uses YAML deserialization methods in 15 places. Of these, 10 use a `safe_load()` method, which restricts the datatypes that can be deserialized. The remaining 5 were manually reviewed.
 
   **CWE-532:** CodeQL detected 74 vulnerabilities with all of them having a severity level of high. 14 of the reported issues were related to test cases and can therefore likely be disregarded. An example of one of the detected vulnerabilities in the users controller can be seen below:
   ![SNYK-CSRF result](./Diagrams/CodeQL-CWE532-Example.PNG)
@@ -84,6 +86,7 @@ Document findings from automated code scanning (if available). Include links to 
 ## Manual Code Review Findings
 Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
 
+ **CWE-502:** We reviewed the source files containing the five instances of YAML.load(). In all five of these instances, the serialized data should consist of simple associative arrays. In one instance, the source code, last updated in 2011, puts the YAML through a series of complicated transformations involving multiple regular expressions, intended as a workaround for some bug. It is unclear to what extent the YAML data used in the YAML.load() statements is under control of a user, but it contains a "title" field, so transforming it with regular expressions and trusting the results may be dangerous. Since the datatypes being deserialized should not consist of polymorphic datatypes, the simplest mitigation would be to change all five instances of `YAML.load()` to `YAML.safe_load()`.
 
   **CWE-79:** Not being proficient in Javascript, I used ChatGPT to further investigate code from the packages/jquery-pageless/index.js file that was included in the automated XSS tool results. The analysis returned the following results from that file:
   
