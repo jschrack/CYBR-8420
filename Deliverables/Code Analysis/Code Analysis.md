@@ -180,6 +180,10 @@ Provide a summary of findings from manual and/or automated scanning. This summar
  
 
 
+  **CWE-502:** Manual review revealed five uses of the unsafe deserialization function YAML.load() when a safe alternative would be more appropriate. One of these unsafe serializations is performed on data containing a "title" field that is deliberately unescaped and then re-escaped in an ad-hoc manner prior to deserialization. We highly recommend the use of safe deserialization methods.
+
+  **CWE-89:** Automated scans uncovered approximately 100 SQL queries that were generated with Ruby format strings rather than with a parameterization library or ORM. Many of these queries involve dozens of variables, several of which are under user control. Some are generated in functions that are directly accessible via web APIs. We recommend limiting the use of raw SQL generation with user-controlled variables with an ORM library and/or parameterization, as well as input validation.
+  
 ## Planned Contributions
 Our planned contribution involves conducting a thorough review of the Canvas-LMS codebase to identify potential vulnerabilities that could impact the platform's security. By analyzing the code, we aim to pinpoint at least one area where we can make meaningful contributions to the open-source community. Given that Canvas-LMS is a tool widely used by students, educators, and institutions, enhancing its security is not only a valuable contribution to the broader community but also a step toward safeguarding the platform for all users, including ourselves. Through our efforts, we hope to ensure a more secure and reliable learning management system for its global audience.
 
