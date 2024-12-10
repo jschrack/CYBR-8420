@@ -52,7 +52,7 @@ Based on our misuse cases, assurance claims, and threat models, the following mo
 
  **SNYK** - Uses real time semantic code analysis based on machine learning to determine code issues such as dead code, type inference, data flow issues, API misuse, and type mismatches for Java, JavaScript, TypeScript, and Python.
 
- **CodeQL** - GitHub's built in code analysis tool for finding vulnerabilites and bugs in codebases. It supports JavaScript/Typescript, Python, and Ruby, which are the languages used by Canvas LMS. The tool can be easily integrated to most codebases and can be setup to run throughout the CI/CD pipeline.
+ **CodeQL** - GitHub's built-in code analysis tool for finding vulnerabilities and bugs in codebases. It supports JavaScript/Typescript, Python, and Ruby, which are the languages used by Canvas LMS. The tool can be easily integrated to most codebases and can be set up to run throughout the CI/CD pipeline.
 
 **grep** - The Unix command-line tool `grep` was used in conjunction with the ```find`` utility to look for text strings indicative of potential security vulnerabilities. The grep utility is not designed specifically for scanning code, but it is very useful for locating potential issues for manual analysis.
 
@@ -68,7 +68,7 @@ Also, a lack of familiarity with programming languages was anticipated to be cha
   There were a total of 15 XSS vulnerabilities (6 high, 8 medium, and 1 low severity). An example of one of the XSS vulnerabilities is below, from the packages/jquery-pageless/index.js file:
 ![SNYK-XSS result](./Diagrams/SNYK-XSS.png)
 
-While performing manual review for CWE-434: Unrestricted Upload of File with Dangerous Type, we noticed that while most dangerous filetypes are prohibited by an allowlist of mime-types, with mime-type checking by extension and file contents, the allowlist includes HTML, raising concerns about stored XSS. Canvas includes an HTML santization module, but permitting HTML attachments is dangerous and should be restricted whenever possible.
+While performing manual review for CWE-434: Unrestricted Upload of File with Dangerous Type, we noticed that while most dangerous file types are prohibited by an allowlist of mime-types, with mime-type checking by extension and file contents, the allowlist includes HTML, raising concerns about stored XSS. Canvas includes an HTML sanitization module, but permitting HTML attachments is dangerous and should be restricted whenever possible.
 
   **CWE-352:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
@@ -97,7 +97,7 @@ While performing manual review for CWE-434: Unrestricted Upload of File with Dan
 ```ruby
 connection.post url, params.merge(header.signed_attributes)
 ```
-In this code snippet, we see that url is the endpoint where the request will be sent, params.merge(header.signed_attributes) is the data being sent in the POST request, which includes parameters (params) and additional attributes (header.signed_attributes). The URL appears to be determined dynamically, likely form user input or some external source, if the input is not validated, and attacker can manipulate it to perform an SSRF attack.
+In this code snippet, we see that url is the endpoint where the request will be sent, params.merge(header.signed_attributes) is the data being sent in the POST request, which includes parameters (params) and additional attributes (header.signed_attributes). The URL appears to be determined dynamically, likely from user input or some external source, if the input is not validated, and attacker can manipulate it to perform an SSRF attack.
 
  **CWE-94:** Not being proficient in Ruby, we rely on ChatGPT for identifying potential vulnerabilities. During the review we found some potential critical Code Injection. Below are examples of flagged code:
 
@@ -141,21 +141,21 @@ Further investigation is required to verify whether the input is being properly 
 
  **CWE-285:**
  1. **app/controllers/gradebooks_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
  2. **app/controllers/user_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
  3. **app/controllers/admins_controller.rb**
     - Using ChatGPT it mentioned potential issues with the destroy and create endpoints as the role_id is not being validated on input. However, after manual code review, it has been determined to not be an issue since it is checking for a user with matching user ID and role ID. Therefore if an invalid role ID is passed then the user account will not be found and the action will not be completed.
  4. **app/controllers/profile_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
  5. **app/controllers/tokens_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
  6. **app/controllers/quizzes/quizzes_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
  7. **app/controllers/quizzes/quizzes_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
  8. **app/controllers/files_controller.rb**
-    - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
+    - No issues identified in this controller related to CWE-285 based on ChatGPT and manual analysis.
 
 ## Summary of Findings
 
