@@ -158,7 +158,6 @@ Further investigation is required to verify whether the input is being properly 
     - No issues identitied in this controller related to CWE-285 based on ChatGPT and manual analysis.
 
 ## Summary of Findings
-Provide a summary of findings from manual and/or automated scanning. This summary should include mappings to CWEs to describe significant findings and perceive risk in your hypothetical operational environment.
 
   **CWE-79:** CodeQL returned several more instances of potential XSS file vulnerabilities than SNYK. The results from SNYK are mostly consistent with the manual code analysis, with the manual analysis returning a bit more detail.
 
