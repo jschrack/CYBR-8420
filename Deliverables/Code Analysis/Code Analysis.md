@@ -73,6 +73,8 @@ Document findings from automated code scanning (if available). Include links to 
   There were a total of 15 XSS vulnerabilities (6 high, 8 medium, and 1 low severity). An example of one of the XSS vulnerabilities is below, from the packages/jquery-pageless/index.js file:
 ![SNYK-XSS result](./Diagrams/SNYK-XSS.png)
 
+While performing manual review for CWE-434: Unrestricted Upload of File with Dangerous Type, we noticed that while most dangerous filetypes are prohibited by an allowlist of mime-types, with mime-type checking by extension and file contents, the allowlist includes HTML, raising concerns about stored XSS. Canvas includes an HTML santization module, but permitting HTML attachments is dangerous and should be restricted whenever possible.
+
   **CWE-352:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
 
