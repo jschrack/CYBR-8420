@@ -3,9 +3,9 @@
 ## Link to Project Board
 [Click here to view the board](https://github.com/users/jschrack/projects/6/views/1)
 
-
-
 ## Code Review Strategy
+
+Our team began by determining the relevant code modules from our previous misuse and assurance cases. We each chose a few CWEs that related to our modules. From there, we looked at the list of the 2024 CWE top 25 most dangerous software weaknesses from the Mitre site to further narrow down our CWEs that we wanted to focus on. Finally, using a combination of manual and automated tool review, we drilled down into the code to analyze potential vulnerabilities. 
 
 ### Relevant Code Modules
 Based on our misuse cases, assurance claims, and threat models, the following modules/files have been determined to be within scope:
@@ -62,14 +62,18 @@ Select automated code-scanning tools based on the software composition of your p
 What challenges did you expect before starting the code review?
 How did your code review strategy attempt to address the anticipated challenges?
 
+Initially, the vastness of the codebase seemed a bit overwhelming and it seemed challenging to determine where to start. After following our code review strategy and targeting specific code modules from our misuse and assurance cases, it helped us to focus in on particular CWEs and files. 
+
+Also, a lack of familiarity with programming languages was anticipated to be challenging for the manual code review for some team members. Access to resources, such as ChatGPT, helped to overcome this challenge.
+
 ## Automated Code Review Findings
 Document findings from automated code scanning (if available). Include links to tool outputs
 
-  **CWE-79:** Using SNYK, I executed a scan to look for XSS weaknesses. Complete results are available at: [Canvas-LMS SNYK scan results](https://app.snyk.io/org/peachykeen00/project/129f2d2c-52f6-4b13-8d76-1f819ec1d2d7)
+  **CWE-79:** Using SNYK, a scan was executed to look for XSS weaknesses. Complete results are available at: [Canvas-LMS SNYK scan results](https://app.snyk.io/org/peachykeen00/project/129f2d2c-52f6-4b13-8d76-1f819ec1d2d7)
   There were a total of 15 XSS vulnerabilities (6 high, 8 medium, and 1 low severity). An example of one of the XSS vulnerabilities is below, from the packages/jquery-pageless/index.js file:
 ![SNYK-XSS result](./Diagrams/SNYK-XSS.png)
 
-  **CWE-352:** Using SNYK, I scanned the files in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
+  **CWE-352:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for CSRF vulnerabilities. There weren't many results with this specific weakness, but there was one specific to Axios, a third-party JavaScript library used to make HTTP requests from a browser. It provides an easy-to-use interface for sending asynchronous requests. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-CSRF.png)
 
   **CWE-89:** We scanned the codebase using the command
@@ -88,7 +92,7 @@ Document findings from a manual code review of critical security functions ident
 
  **CWE-502:** We reviewed the source files containing the five instances of YAML.load(). In all five of these instances, the serialized data should consist of simple associative arrays. In one instance, the source code, last updated in 2011, puts the YAML through a series of complicated transformations involving multiple regular expressions, intended as a workaround for some bug. It is unclear to what extent the YAML data used in the YAML.load() statements is under control of a user, but it contains a "title" field, so transforming it with regular expressions and trusting the results may be dangerous. Since the datatypes being deserialized should not consist of polymorphic datatypes, the simplest mitigation would be to change all five instances of `YAML.load()` to `YAML.safe_load()`.
 
-  **CWE-79:** Not being proficient in Javascript, I used ChatGPT to further investigate code from the packages/jquery-pageless/index.js file that was included in the automated XSS tool results. The analysis returned the following results from that file:
+  **CWE-79:** Not being proficient in Javascript, ChatGPT was used to further investigate code from the packages/jquery-pageless/index.js file that was included in the automated XSS tool results. The analysis returned the following results from that file:
   
 1.	*settings.loaderImage*
       -The loaderHtml function embeds the settings.loaderImage directly into the src attribute of an <img> tag: <img src="' + settings.loaderImage + '" alt="loading more results" style="margin:10px auto" />
@@ -103,7 +107,7 @@ Document findings from a manual code review of critical security functions ident
       -The settings.scrape function is applied to the AJAX response: var data = $.isFunction(settings.scrape) ? settings.scrape(data, xhr) : data;
       -Risk: If the custom scrape function introduces untrusted data or modifies the response insecurely, this could result in XSS when appended to the DOM.
 
-   **CWE-352:** Not being proficient in Ruby, I used ChatGPT to analyze files that had returned CSRF vulnerabilities in the CodeQL scan that Jesse ran. The results from the app/controllers/lti/ims/authentication_controller.rb file are as follows:
+   **CWE-352:** Not being proficient in Ruby, ChatGPT was used to analyze files that had returned CSRF vulnerabilities in the CodeQL scan. The results from the app/controllers/lti/ims/authentication_controller.rb file are as follows:
    1.	Skipped CSRF Protection
         -In the authorize_redirect method: *skip_before_action :verify_authenticity_token, only: :authorize_redirect*, CSRF protection is explicitly skipped, which is a common indicator of potential CWE-352 risks. This allows the endpoint to be accessed without verifying the legitimacy of the request's origin.
 2.	Open Redirect Possibility
@@ -144,4 +148,4 @@ Provide a summary of findings from manual and/or automated scanning. This summar
 Describe your planned or ongoing contributions to the upstream open-source project (I.documentation, design changes, code changes, communications, etc.). Your response can be based on any of the prior assignments in the class.
 
 ## Team Reflection
-Include a reflection of your teamwork for this assignment. What issues occurred? How did you resolve them? What did you plan to change moving forward?
+The team worked well together for this assignment. We worked together early on to determine our way forward and everyone showed up to each scheduled meeting, prepared to contribute. There was continuous communication throughout the week and everyone was respectful and constructive with inputs and feedback.
