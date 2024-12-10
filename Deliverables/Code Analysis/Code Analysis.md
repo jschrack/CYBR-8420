@@ -45,9 +45,9 @@ Identify a list of 5-10 CWEs (as specific as possible) that would be most import
 
  **8. CWE-285: Improper Authorization**
 
- **9. Placeholder**
+ **9. CWE-96: Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')**
  
- **10. Placeholder**
+ **10. CWE-23: Relative Path Traversal**
 
 ### Automated Code-Scanning Tools
 Select automated code-scanning tools based on the software composition of your project. One tool may not be enough. If no free and open-source tools are available, see if you can get a free trial version for a few days
@@ -86,6 +86,12 @@ Document findings from automated code scanning (if available). Include links to 
 
   **CWE-532:** CodeQL detected 74 vulnerabilities with all of them having a severity level of high. 14 of the reported issues were related to test cases and can therefore likely be disregarded. An example of one of the detected vulnerabilities in the users controller can be seen below:
   ![SNYK-CSRF result](./Diagrams/CodeQL-CWE532-Example.PNG)
+
+  **CWE-96:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for SCI vulnerabilities. We found one case of SCI relating to an unsanitized HTTP input. This could lead to a server side template injection weakness.  The details of the vulnerability are included here:
+![SNYK-CSRF result](./Diagrams/SNYK-SCI.png)
+
+**CWE-23:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for Path Traversal vulnerabilities. We found 4 high vulnerabilities in now the send_file method was being used. These cases could lead to improper access of files. The details of the vulnerability are included here:
+![SNYK-CSRF result](./Diagrams/SNYK-PathTraversal.png)
   
 ## Manual Code Review Findings
 Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
