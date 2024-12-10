@@ -90,7 +90,7 @@ Document findings from automated code scanning (if available). Include links to 
   **CWE-96:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for SCI vulnerabilities. We found one case of SCI relating to an unsanitized HTTP input. This could lead to a server side template injection weakness.  The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-SCI.png)
 
-**CWE-23:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for Path Traversal vulnerabilities. We found 4 high vulnerabilities in now the send_file method was being used. These cases could lead to improper access of files. The details of the vulnerability are included here:
+**CWE-23:** Using SNYK, the files were scanned in the Canvas-LMS repository on GitHub for Path Traversal vulnerabilities. We found 4 high vulnerabilities where the send_file method was being used. These cases could lead to improper access of files. This can be achieved through allowing traversal to outside files or directories. The details of the vulnerability are included here:
 ![SNYK-CSRF result](./Diagrams/SNYK-PathTraversal.png)
   
 ## Manual Code Review Findings
