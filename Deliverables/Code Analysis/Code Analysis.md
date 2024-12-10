@@ -170,6 +170,10 @@ Provide a summary of findings from manual and/or automated scanning. This summar
 
   **CWE-532:** CodeQL identified 74 potential issues with 60 of them relating to non-test modules/files. The issue reported is clear-text storage of sensitive information. After performing manual review of the findings reported by the automated tool, it seems this issue needs to be explored further. Many of the reportings are related to the values stored with the @current_user context object. After analyzing that object, it seems that sensitive information like access keys or passwords are stored in a secure format while non-sensitive information is stored in clear-text. This eliminates many of the detected issues but requires the rest of them to be investigated independently.
 
+  **CWE-502:** Manual review revealed five uses of the unsafe deserialization function YAML.load() when a safe alternative would be more appropriate. One of these unsafe serializations is performed on data containing a "title" field that is deliberately unescaped and then re-escaped in an ad-hoc manner prior to deserialization. We highly recommend the use of safe deserialization methods.
+
+  **CWE-89:** Automated scans uncovered approximately 100 SQL queries that were generated with Ruby format strings rather than with a parameterization library or ORM. Many of these queries involve dozens of variables, several of which are under user control. Some are generated in functions that are directly accessible via web APIs. We recommend limiting the use of raw SQL generation with user-controlled variables with an ORM library and/or parameterization, as well as input validation.
+  
 ## Planned Contributions
 Describe your planned or ongoing contributions to the upstream open-source project (I.documentation, design changes, code changes, communications, etc.). Your response can be based on any of the prior assignments in the class.
 
