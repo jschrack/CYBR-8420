@@ -121,7 +121,7 @@ Further investigation is required to verify whether the input is being properly 
   **CWE-79:** Not being proficient in Javascript, ChatGPT was used to further investigate code from the packages/jquery-pageless/index.js file that was included in the automated XSS tool results. The analysis returned the following results from that file:
   
 1.	*settings.loaderImage*
-      -The loaderHtml function embeds the settings.loaderImage directly into the src attribute of an <img> tag: <img src="' + settings.loaderImage + '" alt="loading more results" style="margin:10px auto" />
+      -The loaderHtml function embeds the settings.loaderImage directly into the src attribute of: img src= + settings.loaderImage + alt=loading more results style=margin:10px auto 
       -Risk: If settings.loaderImage is user-controllable and not validated, an attacker could inject a malicious URL or JavaScript scheme (javascript:alert('XSS')), leading to XSS.
 2.	loaderMsg
       -The loader message is set via settings.loaderMsg: $('#pageless-loader .msg').html(opts.loaderMsg);
