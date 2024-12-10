@@ -97,7 +97,7 @@ While performing manual review for CWE-434: Unrestricted Upload of File with Dan
 ```ruby
 connection.post url, params.merge(header.signed_attributes)
 ```
-In this code snippet, we see that url is the endpoint where the request will be sent, params.merge(header.signed_attributes) is the data being sent in the POST request, which includes parameters (params) and additional attributes (header.signed_attributes). The URL appears to be determined dynamically, likely from user input or some external source, if the input is not validated, and attacker can manipulate it to perform an SSRF attack.
+In this code snippet, we see that url is the endpoint where the request will be sent, params.merge(header.signed_attributes) is the data being sent in the POST request, which includes parameters (params) and additional attributes (header.signed_attributes). The URL appears to be determined dynamically, likely from user input or some external source, if the input is not validated, an attacker can manipulate it to perform an SSRF attack.
 
  **CWE-94:** Not being proficient in Ruby, we rely on ChatGPT for identifying potential vulnerabilities. During the review we found some potential critical Code Injection. Below are examples of flagged code:
 
