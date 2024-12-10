@@ -174,6 +174,9 @@ Provide a summary of findings from manual and/or automated scanning. This summar
   
   **CWE-94:** Initially after researching CWE-94 and asking Chatgpt to give examples, we started to manually review the code and found at least three potential examples. To verify we ran a GitHub Code Scanner and confirmed our suspicions and showed a lot more. It is not surprising that Canvas-LMS has user input, but we need to do further research to verify that the sanitation and verification of the user input is properly done
 
+ **CWE-96:** We only found one case of CWE-96 in review but deemed it to be of high importance. This is due to it allowing unsanitized HTTP which could lead to greater vulnerabilities.
+
+  **CWE-23** Through the automated review we found 7 cases of CWE-23. These all relate to the send_file method and fs. commands being used with unsanitized input. 
 
   **CWE-502:** Manual review revealed five uses of the unsafe deserialization function YAML.load() when a safe alternative would be more appropriate. One of these unsafe serializations is performed on data containing a "title" field that is deliberately unescaped and then re-escaped in an ad-hoc manner prior to deserialization. We highly recommend the use of safe deserialization methods.
 
