@@ -169,9 +169,14 @@ Provide a summary of findings from manual and/or automated scanning. This summar
   **CWE-352:** There were not many instances found with SNYK for CSRF, but CodeQL did return several potential files with vulnerabilities. Using manual code review with ChatGPT, a significant amount of detail was revealed.
 
   **CWE-532:** CodeQL identified 74 potential issues with 60 of them relating to non-test modules/files. The issue reported is clear-text storage of sensitive information. After performing manual review of the findings reported by the automated tool, it seems this issue needs to be explored further. Many of the reportings are related to the values stored with the @current_user context object. After analyzing that object, it seems that sensitive information like access keys or passwords are stored in a secure format while non-sensitive information is stored in clear-text. This eliminates many of the detected issues but requires the rest of them to be investigated independently.
+  
+  **CWE-918:** There was only one instance of this CWE being triggered and found manually (by luck). Initially found manually and after running Github Code Scanner, it confirmed our suspicions. The code can potentially be used for Server-Side Request Forgery, more investigation needs to be done.
+  
+  **CWE-94:** Initially after researching CWE-94 and asking Chatgpt to give examples, we started to manually review the code and found at least three potential examples. To verify we ran a GitHub Code Scanner and confirmed our suspicions and showed a lot more. It is not surprising that Canvas-LMS has user input, but we need to do further research to verify that the sanitation and verification of the user input is properly done
+
 
 ## Planned Contributions
-Describe your planned or ongoing contributions to the upstream open-source project (I.documentation, design changes, code changes, communications, etc.). Your response can be based on any of the prior assignments in the class.
+Our planned contribution involves conducting a thorough review of the Canvas-LMS codebase to identify potential vulnerabilities that could impact the platform's security. By analyzing the code, we aim to pinpoint at least one area where we can make meaningful contributions to the open-source community. Given that Canvas-LMS is a tool widely used by students, educators, and institutions, enhancing its security is not only a valuable contribution to the broader community but also a step toward safeguarding the platform for all users, including ourselves. Through our efforts, we hope to ensure a more secure and reliable learning management system for its global audience.
 
 ## Team Reflection
 The team worked well together for this assignment. We worked together early on to determine our way forward and everyone showed up to each scheduled meeting, prepared to contribute. There was continuous communication throughout the week and everyone was respectful and constructive with inputs and feedback.
