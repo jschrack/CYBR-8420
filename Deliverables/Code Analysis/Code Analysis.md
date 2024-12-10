@@ -27,7 +27,6 @@ Based on our misuse cases, assurance claims, and threat models, the following mo
 - Application logging
 
 ### CWEs
-Identify a list of 5-10 CWEs (as specific as possible) that would be most important for findings from your manual or automated code review. The selection of CWEs will depend on the type of programming language, platform, and architecture of your project. Knowing what you are looking for in a large codebase will help you focus your efforts. This is a checklist-based approach. 
 
  **1. CWE-918: Server-Side Request Forgery (SSRF)**
 
@@ -50,7 +49,6 @@ Identify a list of 5-10 CWEs (as specific as possible) that would be most import
  **10. CWE-23: Relative Path Traversal**
 
 ### Automated Code-Scanning Tools
-Select automated code-scanning tools based on the software composition of your project. One tool may not be enough. If no free and open-source tools are available, see if you can get a free trial version for a few days
 
  **SNYK** - Uses real time semantic code analysis based on machine learning to determine code issues such as dead code, type inference, data flow issues, API misuse, and type mismatches for Java, JavaScript, TypeScript, and Python.
 
@@ -59,8 +57,6 @@ Select automated code-scanning tools based on the software composition of your p
 **grep** - The Unix command-line tool `grep` was used in conjunction with the ```find`` utility to look for text strings indicative of potential security vulnerabilities. The grep utility is not designed specifically for scanning code, but it is very useful for locating potential issues for manual analysis.
 
 ### Anticipated Challenges
-What challenges did you expect before starting the code review?
-How did your code review strategy attempt to address the anticipated challenges?
 
 Initially, the vastness of the codebase seemed a bit overwhelming and it seemed challenging to determine where to start. After following our code review strategy and targeting specific code modules from our misuse and assurance cases, it helped us to focus in on particular CWEs and files. 
 
@@ -96,7 +92,6 @@ While performing manual review for CWE-434: Unrestricted Upload of File with Dan
 ![SNYK-CSRF result](./Diagrams/SNYK-PathTraversal.png)
   
 ## Manual Code Review Findings
-Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
 
 **CWE-918:** Not being proficient in Ruby, we rely on ChatGPT for identifying vulnerabilities. The main issue found was the following code snippet:
 
@@ -185,7 +180,7 @@ Provide a summary of findings from manual and/or automated scanning. This summar
   **CWE-89:** Automated scans uncovered approximately 100 SQL queries that were generated with Ruby format strings rather than with a parameterization library or ORM. Many of these queries involve dozens of variables, several of which are under user control. Some are generated in functions that are directly accessible via web APIs. We recommend limiting the use of raw SQL generation with user-controlled variables with an ORM library and/or parameterization, as well as input validation.
   
 ## Planned Contributions
-Our planned contribution involves conducting a thorough review of the Canvas-LMS codebase to identify potential vulnerabilities that could impact the platform's security. By analyzing the code, we aim to pinpoint at least one area where we can make meaningful contributions to the open-source community. Given that Canvas-LMS is a tool widely used by students, educators, and institutions, enhancing its security is not only a valuable contribution to the broader community but also a step toward safeguarding the platform for all users, including ourselves. Through our efforts, we hope to ensure a more secure and reliable learning management system for its global audience.
+Throughout the semester we have found many issues that can be remediated through pull requests to Canvas-LMS. Many of these issues include potential issues with input sanitization. In these cases we will make updates and pull requests to the main Canvas-LMS code base to remediate the issues. Through further findings we see potential issues in allowing unsanitized HTML inputs. We will further look into these issues to determine if the HTML sanitization is adequate enough to remediate these issues. In addition, the software uses unsafe deserialization methods in five places where restricted deserialization methods are more appropriate. All instances of YAML.load() should be changed to YAML.safe_load().
 
 ## Team Reflection
 The team worked well together for this assignment. We worked together early on to determine our way forward and everyone showed up to each scheduled meeting, prepared to contribute. There was continuous communication throughout the week and everyone was respectful and constructive with inputs and feedback.
