@@ -29,9 +29,9 @@ Based on our misuse cases, assurance claims, and threat models, the following mo
 ### CWEs
 Identify a list of 5-10 CWEs (as specific as possible) that would be most important for findings from your manual or automated code review. The selection of CWEs will depend on the type of programming language, platform, and architecture of your project. Knowing what you are looking for in a large codebase will help you focus your efforts. This is a checklist-based approach. 
 
- **1. Placeholder**
+ **1. CWE-918: Server-Side Request Forgery (SSRF)**
 
- **2. Placeholder**
+ **2. CWE-94: Improper Control of Generation of Code ('Code Injection')**
 
  **3. CWE-79: Improper Neutralization of Input During Web Page Generation / Cross-site Scripting**
 
@@ -89,6 +89,26 @@ Document findings from automated code scanning (if available). Include links to 
   
 ## Manual Code Review Findings
 Document findings from a manual code review of critical security functions identified in misuse cases, assurance cases, and threat models.
+
+**CWE-918:** Not being proficient in Ruby, we rely on ChatGPT for identifying vulnerabilities. The main issue found was the following code snippet:
+
+```ruby
+connection.post url, params.merge(header.signed_attributes)
+```
+In this code snippet, we see that url is the endpoint where the request will be sent, params.merge(header.signed_attributes) is the data being sent in the POST request, which includes parameters (params) and additional attributes (header.signed_attributes). The URL appears to be determined dynamically, likely form user input or some external source, if the input is not validated, and attacker can manipulate it to perform an SSRF attack.
+
+ **CWE-94:** Not being proficient in Ruby, we rely on ChatGPT for identifying potential vulnerabilities. During the review we found some potential critical Code Injection. Below are examples of flagged code:
+
+1. **`model = Object.const_get(params[:context_type])`**  
+   - **Issue**: The execution of this code depends on the user-provided value `params[:context_type]`.  
+
+2. **`@context_class = Object.const_get(@context_type, false)`**  
+   - **Issue**: The execution of this code depends on the user-provided value `@context_type`.  
+
+3. **`scope = source.send(type).select(:id).except(:preload)`**  
+   - **Issue**: The execution of this code depends on the user-provided value `type`.  
+
+Further investigation is required to verify whether the input is being properly validated to prevent attackers from manipulating the code, any user-controlled input could potentially be used for malicious code execution.
 
  **CWE-502:** We reviewed the source files containing the five instances of YAML.load(). In all five of these instances, the serialized data should consist of simple associative arrays. In one instance, the source code, last updated in 2011, puts the YAML through a series of complicated transformations involving multiple regular expressions, intended as a workaround for some bug. It is unclear to what extent the YAML data used in the YAML.load() statements is under control of a user, but it contains a "title" field, so transforming it with regular expressions and trusting the results may be dangerous. Since the datatypes being deserialized should not consist of polymorphic datatypes, the simplest mitigation would be to change all five instances of `YAML.load()` to `YAML.safe_load()`.
 
