@@ -63,7 +63,6 @@ Initially, the vastness of the codebase seemed a bit overwhelming and it seemed 
 Also, a lack of familiarity with programming languages was anticipated to be challenging for the manual code review for some team members. Access to resources, such as ChatGPT, helped to overcome this challenge.
 
 ## Automated Code Review Findings
-Document findings from automated code scanning (if available). Include links to tool outputs
 
   **CWE-79:** Using SNYK, a scan was executed to look for XSS weaknesses. Complete results are available at: [Canvas-LMS SNYK scan results](https://app.snyk.io/org/peachykeen00/project/129f2d2c-52f6-4b13-8d76-1f819ec1d2d7)
   There were a total of 15 XSS vulnerabilities (6 high, 8 medium, and 1 low severity). An example of one of the XSS vulnerabilities is below, from the packages/jquery-pageless/index.js file:
